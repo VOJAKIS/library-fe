@@ -1,0 +1,11 @@
+.decimalNumber {
+	width: 160px;
+	padding: 4px 12px;
+	font-size: large;
+}
+
+.checkboxes {
+	display: inline-block;
+	margin-top: 16px;
+	counter-set: bit 8;
+}

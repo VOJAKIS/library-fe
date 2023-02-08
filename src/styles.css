@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+input[type="checkbox"]::after {
+	counter-increment: bit -1;
+	content: counter(bit);
+	position: relative;
+	top: -14px;
+	left: 3px;
+}
