@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
 	updateDecimal(e: HTMLElement): void {
 		let bitPosition = Number(e.getAttribute("data-position"));
-		this.number += ((e as HTMLInputElement).checked) ? 2 ** bitPosition : (-2) ** bitPosition;
+		this.number += ((e as HTMLInputElement).checked) ? 2 ** bitPosition : (-1) * 2 ** bitPosition;
 	}
 
 	updateCheckboxes(number: string): void {
