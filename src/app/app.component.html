@@ -12,6 +12,7 @@
 <div>
 	<h2>Bonusová úloha 1: Pure JS vs Angular</h2>
 	<div>
-		<button [ngClass]="buttonActive ? 'active' : ''" class="btn" (click)="toggleCssClass()">Click me</button>
+		<!-- <button [ngClass]="buttonActive ? 'active' : ''" class="btn" (click)="toggleCssClass()">Click me</button> -->
+		<button [ngClass]="{'active':buttonActive}" class="btn" (click)="toggleCssClass()">Click me</button>
 	</div>
 </div>

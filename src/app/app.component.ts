@@ -7,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AppComponent implements OnInit {
-	title: string = 'cvicenie1';
-	number: number = 0;
-	maximumNumber: number = 2 ** 8 - 1;
-	minimumNumber: number = 0;
+	title = 'cvicenie1';
+	number = 0;
+	maximumNumber = 2 ** 8 - 1;
+	minimumNumber = 0;
 
-	buttonActive: boolean = false;
+	buttonActive = false;
 
+	
 	changeProjectTitle(title: string): void {
 		this.title = title;
 	}
