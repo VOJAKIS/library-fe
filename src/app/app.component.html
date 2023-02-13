@@ -1,18 +1,24 @@
-<h1>Cvičenie 1:</h1>
 <div>
-	<h2>Domáca úloha:</h2>
-	<label>dec </label>
-	<input class="decimalNumber" #decimalNumber type="number" [value]="number"
-		(input)="updateCheckboxes(decimalNumber.value)" [max]="maximumNumber" [min]="minimumNumber">
-	<br>
-	<label>bin </label>
-	<div class="checkboxes">
-	</div>
+	<button>Používatelia</button>
+	<button>Knihy</button>
+	<button>Výpožičky</button>
 </div>
-<div>
-	<h2>Bonusová úloha 1: Pure JS vs Angular</h2>
-	<div>
-		<!-- <button [ngClass]="buttonActive ? 'active' : ''" class="btn" (click)="toggleCssClass()">Click me</button> -->
-		<button [ngClass]="{'active':buttonActive}" class="btn" (click)="toggleCssClass()">Click me</button>
-	</div>
-</div>
+
+<form [formGroup]="form">
+	<label>Meno:</label>
+	<input type="text" formControlName="name">
+	<label>Priezvisko:</label>
+	<input type="text" formControlName="surname">
+	<button type="button" (click)="savePerson()">Uložiť</button>
+</form>
+
+<table *ngIf="persons.length">
+	<tr>
+		<th>Meno</th>
+		<th>Priezvisko</th>
+	</tr>
+	<tr *ngFor="let person of persons">
+		<td>{{ person.name }}</td>
+		<td>{{ person.surname }}</td>
+	</tr>
+</table>
