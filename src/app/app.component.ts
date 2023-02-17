@@ -4,8 +4,46 @@ import { FormGroup, FormControl } from '@angular/forms';
 export enum Menu {
 	USERS = 'USERS',
 	BOOKS = 'BOOKS',
+	GENRE = 'GENRE',
 	BORROWINGS = 'BORROWINGS'
 }
+
+/* abstract class Tab {
+	protected id: number;
+	protected values = Array<{}>;
+
+	constructor(id:number) {
+		this.id = id;
+	}
+
+	abstract save(): void;
+}
+
+export class Books extends Tab {
+	constructor(id:number) {
+		super(id);
+		console.log(this.id);
+	}
+
+	save() {
+
+	}
+}
+
+class Users extends Tab {
+	name:string;
+	contact:string;
+
+	constructor( id:number, name:string, contact:string) {
+		super(id);
+		this.name = name;
+		this.contact = contact;
+	}
+
+	save() {
+
+	}
+} */
 
 @Component({
 	selector: 'app-root',
@@ -14,33 +52,79 @@ export enum Menu {
 })
 
 export class AppComponent {
-	form: FormGroup;
+	userForm: FormGroup;
+	bookForm: FormGroup;
+	genreForm: FormGroup;
+	borrowingForm: FormGroup;
 
-	persons: Array<{
+	users: Array<{
+		id: number,
 		name: string,
-		surname: string
+		contact: string
+	}> = [];
+
+	books: Array<{
+		id: number,
+		name: string,
+		author: string,
+		available: number
+	}> = [];
+
+	genres: Array<{
+		id: number,
+		name: string
+	}> = [];
+
+	borrowings: Array<{
+		id: number,
+		book: string,
+		user: string
 	}> = [];
 
 	menu = Menu;
-	actualMenu = Menu.BOOKS;
+	actualMenu = Menu.USERS;
 
 	constructor() {
-		this.form = new FormGroup({
+		this.userForm = new FormGroup({
+			id: new FormControl(),
 			name: new FormControl(),
-			surname: new FormControl()
+			contact: new FormControl()
+		})
+		this.bookForm = new FormGroup({
+			id: new FormControl(),
+			name: new FormControl(),
+			author: new FormControl(),
+			available: new FormControl()
+		})
+		this.genreForm = new FormGroup({
+			id: new FormControl(),
+			name: new FormControl(),
+		})
+		this.borrowingForm = new FormGroup({
+			id: new FormControl(),
+			book: new FormControl(),
+			user: new FormControl(),
 		})
 	}
 
-	savePerson(): void {
-		this.persons.push(this.form.value);
-		console.log("Vypisujem osoby.");
-		this.persons.forEach((e) => {
-			this.logPerson(e);
-		});
-		this.form.reset();
+	saveUser(): void {
+		this.users.push(this.userForm.value);
+		this.userForm.reset();
+	}
+	saveBook(): void {
+		this.books.push(this.bookForm.value);
+		this.bookForm.reset();
+	}
+	saveGenre(): void {
+		this.genres.push(this.genreForm.value);
+		this.genreForm.reset();
+	}
+	saveBorrowing(): void {
+		this.borrowings.push(this.borrowingForm.value);
+		this.borrowingForm.reset();
 	}
 
-	logPerson(person: {name:string, surname:string}): void {
-		console.log(person.name, person.surname);
+	changeActualMenu(menuItem: Menu) {
+		this.actualMenu = menuItem;
 	}
 }

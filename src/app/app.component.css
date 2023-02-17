@@ -9,3 +9,8 @@
 	margin-top: 16px;
 	counter-set: bit 8;
 }
+
+label {
+	display: block;
+	margin-top: 6px;
+}

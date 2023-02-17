@@ -1,24 +1,124 @@
 <div>
-	<button>Používatelia</button>
-	<button>Knihy</button>
-	<button>Výpožičky</button>
+	<button type="button" (click)="changeActualMenu(menu.USERS)">Users</button>
+	<button type="button" (click)="changeActualMenu(menu.BOOKS)">Books</button>
+	<button type="button" (click)="changeActualMenu(menu.GENRE)">Genre</button>
+	<button type="button" (click)="changeActualMenu(menu.BORROWINGS)">Borrowings</button>
 </div>
 
-<form [formGroup]="form">
-	<label>Meno:</label>
-	<input type="text" formControlName="name">
-	<label>Priezvisko:</label>
-	<input type="text" formControlName="surname">
-	<button type="button" (click)="savePerson()">Uložiť</button>
-</form>
+<h3>{{ actualMenu }}</h3>
 
-<table *ngIf="persons.length">
-	<tr>
-		<th>Meno</th>
-		<th>Priezvisko</th>
-	</tr>
-	<tr *ngFor="let person of persons">
-		<td>{{ person.name }}</td>
-		<td>{{ person.surname }}</td>
-	</tr>
-</table>
+<ng-container *ngIf="actualMenu === menu.USERS">
+	<!-- <h3>Users</h3> -->
+	<form [formGroup]="userForm">
+		<label>id:
+			<input type="number" formControlName="id">
+		</label>
+		<label>name:
+			<input type="text" formControlName="name">
+		</label>
+		<label>contact:
+			<input type="text" formControlName="contact">
+		</label>
+		<button type="button" (click)="saveUser()">Pridaj</button>
+	</form>
+	
+	<table *ngIf="users.length">
+		<tr>
+			<th>id</th>
+			<th>name</th>
+			<th>contact</th>
+		</tr>
+		<tr *ngFor="let user of users">
+			<td>{{ user.id }}</td>
+			<td>{{ user.name }}</td>
+			<td>{{ user.contact }}</td>
+		</tr>
+	</table>
+</ng-container>
+
+<ng-container *ngIf="actualMenu === menu.BOOKS">
+	<!-- <h3>Books</h3> -->
+	<form [formGroup]="bookForm">
+		<label>id:
+			<input type="number" formControlName="id">
+		</label>
+		<label>name:
+			<input type="text" formControlName="name">
+		</label>
+		<label>author:
+			<input type="text" formControlName="author">
+		</label>
+		<label>available:
+			<input type="number" formControlName="available">
+		</label>
+		<button type="button" (click)="saveBook()">Pridaj</button>
+	</form>
+	
+	<table *ngIf="books.length">
+		<tr>
+			<th>id</th>
+			<th>name</th>
+			<th>author</th>
+			<th>available</th>
+		</tr>
+		<tr *ngFor="let book of books">
+			<td>{{ book.id }}</td>
+			<td>{{ book.name }}</td>
+			<td>{{ book.author }}</td>
+			<td>{{ book.available }}</td>
+		</tr>
+	</table>
+</ng-container>
+
+<ng-container *ngIf="actualMenu === menu.GENRE">
+	<!-- <h3>Genre</h3> -->
+	<form [formGroup]="genreForm">
+		<label>id:
+			<input type="number" formControlName="id">
+		</label>
+		<label>name:
+			<input type="text" formControlName="name">
+		</label>
+		<button type="button" (click)="saveGenre()">Pridaj</button>
+	</form>
+	
+	<table *ngIf="genres.length">
+		<tr>
+			<th>id</th>
+			<th>name</th>
+		</tr>
+		<tr *ngFor="let genre of genres">
+			<td>{{ genre.id }}</td>
+			<td>{{ genre.name }}</td>
+		</tr>
+	</table>
+</ng-container>
+
+<ng-container *ngIf="actualMenu === menu.BORROWINGS">
+	<!-- <h3>Borrowings</h3> -->
+	<form [formGroup]="borrowingForm">
+		<label>id:
+			<input type="number" formControlName="id">
+		</label>
+		<label>name:
+			<input type="text" formControlName="book">
+		</label>
+		<label>user:
+			<input type="text" formControlName="user">
+		</label>
+		<button type="button" (click)="saveBorrowing()">Pridaj</button>
+	</form>
+
+	<table *ngIf="borrowings.length">
+		<tr>
+			<th>id</th>
+			<th>book</th>
+			<th>user</th>
+		</tr>
+		<tr *ngFor="let borrowing of borrowings">
+			<td>{{ borrowing.id }}</td>
+			<td>{{ borrowing.book }}</td>
+			<td>{{ borrowing.user }}</td>
+		</tr>
+	</table>
+</ng-container>
