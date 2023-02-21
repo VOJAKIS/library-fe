@@ -1,1 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Settings */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    height: 100vh;
+    width: 100%;
+}
+
+
+/* Header */
+.header {
+    width: 100%;
+    background: #080;
+    padding: 1rem .5rem;
+    color: #fff;
+}
+
+
+/* Task Window */
+.task {
+    margin: 10px .5rem;
+    padding: 10px 0;
+    border-bottom: 1px solid #000;
+}
+.task > input[type=number] {
+    width: 40vmin;
+}
+
+
+/* Design checkboxov */
+.bits-selector {
+    counter-reset: bit-counter 8;
+    display: inline;
+}
+.bits-selector > input[type=checkbox] {
+    margin: 30px 5px 20px;
+    counter-increment: bit-counter -1;
+}
+.bits-selector > input[type=checkbox]::before {
+    content: counter(bit-counter);
+    display: block;
+    margin: -20px 3px;
+}
+.task > label {
+    padding: 10px 15px 10px 0;
+    display: inline-block;
+}
