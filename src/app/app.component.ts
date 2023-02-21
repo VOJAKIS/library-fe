@@ -1,66 +1,113 @@
-import { Component, ɵconvertToBitFlags } from '@angular/core';
+import {Component} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+
+export enum Menu {
+
+  BOOKS = 'BOOKS', // Defaultne nastavi 0 - n ak nezadame hodnotu
+  USERS = 'USERS',
+  BORROWINGS = 'BORROWINGS',
+  GENRES = 'GENRES'
+}
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+
 export class AppComponent {
+  pageTitle = 'wete3_2023-02-20_zadanie2';
+  userForm: FormGroup;
+  bookForm: FormGroup;
+  borrForm: FormGroup;
 
-  // Atribúty
-  pageTitle = 'wete3_zadanie_2023-02-13';
-  decimalNumber = 0;
-  minimalInput : number = 0;    // ošetrenie čísla menšieho ako 0
-  maximalInput : number = 255;  // 2^8 - 1
-
-
-  // Vytvorenie checkboxov -> Binary Number
-  createCheckboxes(bitsAmount: number) : void {
-    let output = document.querySelector('.bits-selector');
-    for (let i = bitsAmount - 1; i >= 0; i--) {
-      let bit = document.createElement('input');
-      bit.type = 'checkbox';
-      bit.classList.add('bit-selector');
-      bit.dataset['bit'] = i.toString();
-      bit.addEventListener('input', () => {
-        this.updateDecimal();
-      });
-      output!.appendChild(bit);
-    }
-  }
-
-
-  // Premena desiatkového čísla na binárne a aktivácia checkboxov
-  updateBits(value: string) : void {
-    value = this.minimalInput > Number(value) || this.maximalInput < Number(value) ? '0' : value;
-    let binaryNumber = parseInt(value).toString(2).padStart(8,'0').split('');
-    console.log(binaryNumber);
-    let bits = document.querySelectorAll('[data-bit]');
-    console.log(bits.length);
-    for(let i = 0; i < bits.length; i++) {
-      console.log(i);
-      (bits[i] as HTMLInputElement).checked = (binaryNumber[i] == '1') ? true : false;
-    }
-    this.decimalNumber = Number(value);
-  }
-
-
-  // Zmena v checkboxoch (zmena desiatkového čísla)
-  updateDecimal() : void {
-    // Teoreticky by stačilo volať len po index meneného checkboxu pre rýchlejší kód, ale tu je len maximálne 8 bitový vstup (8 checkboxov)
-    let bits = document.querySelectorAll('[data-bit]');
-    let temp = Array(bits.length).fill(0);
-    bits.forEach((bit, i) => {
-      temp[i] = ((bit as HTMLInputElement).checked ? 1 : 0);
+  constructor() {
+    this.userForm = new FormGroup({
+      id: new FormControl,
+      name: new FormControl,
+      contact: new FormControl,
+    })
+    this.bookForm = new FormGroup({
+      id: new FormControl,
+      name: new FormControl,
+      author: new FormControl,
+      availability: new FormControl
     });
-    temp = temp.reverse().map((num, index) => num * (2 ** index));
-    this.decimalNumber = temp.reduce((prev, curr) => prev + curr);
+    this.borrForm = new FormGroup({
+      id: new FormControl,
+      book_name: new FormControl,
+      user_name: new FormControl
+    });
   }
 
+  // persons: Array<any> = []; // Inicializacia zoznam osob, na ukladanie, bez vkladania z formulara
+  /*persons: Array<{ // Inicializacia zoznamu osob, na ukladanie z formulara
+    name: string,
+    surname: string
+  }> = [];*/
 
-  // Vytvorenie tlačidiel po načítaní stránky
-  ngOnInit() : void {
-    this.createCheckboxes(8);
+  users: Array<{
+    id: number,
+    name: number,
+    contact: string
+  }> = [];
+
+  books: Array<{
+    id: number,
+    name: string,
+    author: string,
+    availability: boolean
+  }> = [];
+
+  borrowings: Array<{
+    id: number,
+    book_name: string,
+    user_name: string
+  }> = [];
+
+  menu = Menu;
+  actualMenu = Menu.BOOKS;
+
+
+  saveUser() : void {
+    this.users.push(this.userForm.value);
+    this.userForm.reset();
+  }
+
+  saveBook() : void {
+    this.books.push(this.bookForm.value);
+    this.bookForm.reset();
+  }
+
+  saveBorrowing() : void {
+    let check : any = new Array(this.borrForm.value)[0];
+    console.log(check);
+    if(check.id != null || check.book_name != null || check.user_name != null) {
+      this.borrowings.push(this.borrForm.value);
+      console.log(this.borrowings);
+    }
+    this.borrForm.reset();
+  }
+
+  updateSelection(): void {
+    this.books = this.books;
+  }
+
+  /*savePerson() : void {
+    console.log('OSOBA:', this.form.value);
+    this.persons.push(this.form.value); // pridanie osoby do zoznamu
+    console.log(this.persons);
+    this.form.reset(); // Vynuluje FormControls (formular)
+  }*/
+
+  changeMenu(menuItem : Menu) : void {
+    this.actualMenu = menuItem;
   }
 
 }
+
+// actualMenu: Menu = Menu.USERS -> nemusim definovat typ premennej

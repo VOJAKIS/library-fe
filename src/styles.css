@@ -1,50 +1,97 @@
-/* Global Settings */
+/* You can add global styles to this file, and also import other style files */
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 body {
-    height: 100vh;
-    width: 100%;
+  height: 100vh;
+  width: 100%;
 }
 
 
 /* Header */
 .header {
-    width: 100%;
-    background: #080;
-    padding: 1rem .5rem;
-    color: #fff;
+  width: 100%;
+  background: #080;
+  padding: 1rem .5rem;
+  color: #fff;
 }
 
 
 /* Task Window */
 .task {
-    margin: 10px .5rem;
-    padding: 10px 0;
-    border-bottom: 1px solid #000;
+  margin: 10px .5rem;
+  padding: 10px 0;
+  border-bottom: 1px solid #000;
 }
-.task > input[type=number] {
-    width: 40vmin;
+.task > h3 {
+  width: 100%;
+  margin: 10px auto;
+  text-align: center !important;
+}
+
+/* Menu */
+.menu {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+}
+.menu > button {
+  padding: 10px 5px;
+  margin: 0 5px;
+  min-width: 15vmin;
 }
 
 
-/* Design checkboxov */
-.bits-selector {
-    counter-reset: bit-counter 8;
-    display: inline;
+/* Form */
+.task > form {
+  width: 60%;
+  margin: 0 auto;
 }
-.bits-selector > input[type=checkbox] {
-    margin: 30px 5px 20px;
-    counter-increment: bit-counter -1;
+.task form * {
+  margin: 5px 0;
 }
-.bits-selector > input[type=checkbox]::before {
-    content: counter(bit-counter);
-    display: block;
-    margin: -20px 3px;
+.task > form > label {
+  width: 50%;
+  float: left;
 }
-.task > label {
-    padding: 10px 15px 10px 0;
-    display: inline-block;
+.task > form > input {
+  width: 45%;
+  float: right;
+}
+.task > form > input[type=checkbox] {
+  margin: 5px 0;
+  width: 45%;
+  display: block;
+}
+.task > form > button:before {
+  content: '';
+  display: block;
+  width: 0.1px;
+  height: 0.1px;
+}
+.task > form > button {
+  padding: 5px 0;
+  width: 60%;
+  margin: 5% 20% 10px;
+}
+
+/* 404 - Status Design */
+.err-message {
+  color: #f00;
+  text-align: center;
+  margin: 25px auto;
+}
+
+
+/* Bonusova uloha - Design */
+.bonus-task form {
+  width: 60%;
+  margin: 0 auto;
+}
+.bonus-task form > select {
+  float: right;
+  display: block;
+  width: 40%;
 }
