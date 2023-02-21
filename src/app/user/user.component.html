@@ -1,0 +1,31 @@
+<h3>Users</h3>
+<form [formGroup]="userForm">
+	<label>id:
+		<input type="number" formControlName="id">
+		<p class="invalid-text" *ngIf="userForm.controls['id'].invalid">Je nutné zadať ID.</p>
+	</label>
+	<label>name:
+		<input type="text" formControlName="name">
+		<p class="invalid-text" *ngIf="userForm.controls['name'].invalid">Je nutné zadať meno.</p>
+	</label>
+	<label>contact:
+		<input type="text" formControlName="contact">
+		<p class="invalid-text" *ngIf="!userForm.controls['contact'].invalid">Je nutné zadať e-mail.</p>
+	</label>
+	<button type="button" [disabled]="userForm.invalid" (click)="saveUser()">Pridaj</button>
+</form>
+
+<table *ngIf="users.length">
+	<tr>
+		<th>id</th>
+		<th>name</th>
+		<th>contact</th>
+	</tr>
+	<tr *ngFor="let user of users; let i = index">
+		<td>{{ user.id }}</td>
+		<td>{{ user.name }}</td>
+		<td>{{ user.contact }}</td>
+		<td><button (click)="editUser(i)">Edit user</button></td>
+		<td><button (click)="deleteUser(i)">Delete user</button></td>
+	</tr>
+</table>

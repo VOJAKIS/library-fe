@@ -1,5 +1,6 @@
 <div>
-	<button type="button" (click)="changeActualMenu(menu.USERS)">Users</button>
+	<!-- <button type="button" (click)="changeActualMenu(menu.USERS)">Users</button> -->
+	<button type="button" routerLink="/user">Users</button>
 	<button type="button" (click)="changeActualMenu(menu.BOOKS)">Books</button>
 	<button type="button" (click)="changeActualMenu(menu.GENRE)">Genre</button>
 	<button type="button" (click)="changeActualMenu(menu.BORROWINGS)">Borrowings</button>
@@ -8,32 +9,7 @@
 <h3>{{ actualMenu }}</h3>
 
 <ng-container *ngIf="actualMenu === menu.USERS">
-	<!-- <h3>Users</h3> -->
-	<form [formGroup]="userForm">
-		<label>id:
-			<input type="number" formControlName="id">
-		</label>
-		<label>name:
-			<input type="text" formControlName="name">
-		</label>
-		<label>contact:
-			<input type="text" formControlName="contact">
-		</label>
-		<button type="button" (click)="saveUser()">Pridaj</button>
-	</form>
-	
-	<table *ngIf="users.length">
-		<tr>
-			<th>id</th>
-			<th>name</th>
-			<th>contact</th>
-		</tr>
-		<tr *ngFor="let user of users">
-			<td>{{ user.id }}</td>
-			<td>{{ user.name }}</td>
-			<td>{{ user.contact }}</td>
-		</tr>
-	</table>
+	<router-outlet></router-outlet>
 </ng-container>
 
 <ng-container *ngIf="actualMenu === menu.BOOKS">

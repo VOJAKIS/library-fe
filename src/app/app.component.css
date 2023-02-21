@@ -14,3 +14,7 @@ label {
 	display: block;
 	margin-top: 6px;
 }
+
+.invalid-text {
+	color: red;
+}

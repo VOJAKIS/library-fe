@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { User } from './model/user.model';
 
 export enum Menu {
 	USERS = 'USERS',
@@ -52,16 +53,17 @@ class Users extends Tab {
 })
 
 export class AppComponent {
-	userForm: FormGroup;
 	bookForm: FormGroup;
 	genreForm: FormGroup;
 	borrowingForm: FormGroup;
 
-	users: Array<{
+	// Je možné spraviť aj takto
+	/* users: Array<{
 		id: number,
 		name: string,
 		contact: string
-	}> = [];
+	}> = []; */
+	users: Array<User> = [];
 
 	books: Array<{
 		id: number,
@@ -85,11 +87,7 @@ export class AppComponent {
 	actualMenu = Menu.USERS;
 
 	constructor() {
-		this.userForm = new FormGroup({
-			id: new FormControl(),
-			name: new FormControl(),
-			contact: new FormControl()
-		})
+		
 		this.bookForm = new FormGroup({
 			id: new FormControl(),
 			name: new FormControl(),
@@ -107,23 +105,26 @@ export class AppComponent {
 		})
 	}
 
-	saveUser(): void {
-		this.users.push(this.userForm.value);
-		this.userForm.reset();
-	}
+	
+
 	saveBook(): void {
 		this.books.push(this.bookForm.value);
 		this.bookForm.reset();
 	}
+
+
 	saveGenre(): void {
 		this.genres.push(this.genreForm.value);
 		this.genreForm.reset();
 	}
+	
+	
 	saveBorrowing(): void {
 		this.borrowings.push(this.borrowingForm.value);
 		this.borrowingForm.reset();
 	}
 
+	
 	changeActualMenu(menuItem: Menu) {
 		this.actualMenu = menuItem;
 	}
