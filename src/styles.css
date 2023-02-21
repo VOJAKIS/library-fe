@@ -7,3 +7,8 @@ input[type="checkbox"]::after {
 	top: -14px;
 	left: 3px;
 }
+
+.selector {
+	display: inline-block;
+	margin-right: 40px;
+}

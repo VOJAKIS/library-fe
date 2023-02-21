@@ -1,7 +1,6 @@
 <div>
 	<button type="button" (click)="changeActualMenu(menu.USERS)">Users</button>
 	<button type="button" (click)="changeActualMenu(menu.BOOKS)">Books</button>
-	<button type="button" (click)="changeActualMenu(menu.GENRE)">Genre</button>
 	<button type="button" (click)="changeActualMenu(menu.BORROWINGS)">Borrowings</button>
 </div>
 
@@ -95,30 +94,34 @@
 </ng-container>
 
 <ng-container *ngIf="actualMenu === menu.BORROWINGS">
-	<!-- <h3>Borrowings</h3> -->
+
 	<form [formGroup]="borrowingForm">
-		<label>id:
-			<input type="number" formControlName="id">
-		</label>
-		<label>name:
-			<input type="text" formControlName="book">
-		</label>
-		<label>user:
-			<input type="text" formControlName="user">
-		</label>
-		<button type="button" (click)="saveBorrowing()">Pridaj</button>
+		<div class="selector">
+			<h3>Select user:</h3>
+			<div *ngFor="let user of users">
+				<input type="radio" name="user" formControlName="user" [value]="user">{{ user.name }}
+			</div>
+		</div>
+		<div class="selector">
+			<h3>Select book:</h3>
+			<div *ngFor="let book of books">
+				<input type="radio" name="book" formControlName="book" [value]="book">{{ book.name }}
+			</div>
+		</div>
+
+		<button (click)="saveBorrowing()">Pridaj výpožičku</button>
 	</form>
 
 	<table *ngIf="borrowings.length">
 		<tr>
 			<th>id</th>
-			<th>book</th>
 			<th>user</th>
+			<th>book</th>
 		</tr>
 		<tr *ngFor="let borrowing of borrowings">
 			<td>{{ borrowing.id }}</td>
-			<td>{{ borrowing.book }}</td>
-			<td>{{ borrowing.user }}</td>
+			<td>{{ borrowing.user.name }}</td>
+			<td>{{ borrowing.book.name }}</td>
 		</tr>
 	</table>
 </ng-container>

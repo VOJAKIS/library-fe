@@ -8,42 +8,17 @@ export enum Menu {
 	BORROWINGS = 'BORROWINGS'
 }
 
-/* abstract class Tab {
-	protected id: number;
-	protected values = Array<{}>;
-
-	constructor(id:number) {
-		this.id = id;
-	}
-
-	abstract save(): void;
+export interface User {
+  id: number,
+	name: string,
+	contact: string
 }
-
-export class Books extends Tab {
-	constructor(id:number) {
-		super(id);
-		console.log(this.id);
-	}
-
-	save() {
-
-	}
+export interface Book {
+  id: number,
+	name: string,
+	author: string,
+	available: number
 }
-
-class Users extends Tab {
-	name:string;
-	contact:string;
-
-	constructor( id:number, name:string, contact:string) {
-		super(id);
-		this.name = name;
-		this.contact = contact;
-	}
-
-	save() {
-
-	}
-} */
 
 @Component({
 	selector: 'app-root',
@@ -57,18 +32,8 @@ export class AppComponent {
 	genreForm: FormGroup;
 	borrowingForm: FormGroup;
 
-	users: Array<{
-		id: number,
-		name: string,
-		contact: string
-	}> = [];
-
-	books: Array<{
-		id: number,
-		name: string,
-		author: string,
-		available: number
-	}> = [];
+  users: Array<User> = [];
+  books: Array<Book> = [];
 
 	genres: Array<{
 		id: number,
@@ -77,34 +42,65 @@ export class AppComponent {
 
 	borrowings: Array<{
 		id: number,
-		book: string,
-		user: string
+		book: Book,
+		user: User
 	}> = [];
 
 	menu = Menu;
-	actualMenu = Menu.USERS;
+	actualMenu = Menu.BORROWINGS;
 
 	constructor() {
 		this.userForm = new FormGroup({
 			id: new FormControl(),
 			name: new FormControl(),
 			contact: new FormControl()
-		})
+		});
 		this.bookForm = new FormGroup({
 			id: new FormControl(),
 			name: new FormControl(),
 			author: new FormControl(),
 			available: new FormControl()
-		})
+		});
 		this.genreForm = new FormGroup({
 			id: new FormControl(),
 			name: new FormControl(),
-		})
+		});
 		this.borrowingForm = new FormGroup({
 			id: new FormControl(),
 			book: new FormControl(),
 			user: new FormControl(),
-		})
+		});
+
+    this.users.push({
+      id: 0,
+      name: 'User 1',
+      contact: 'Yes'
+    }, {
+      id: 1,
+      name: 'User 2',
+      contact: 'Yes'
+    }, {
+      id: 2,
+      name: 'User 3',
+      contact: 'Yes'
+    });
+
+    this.books.push({
+      id: 0,
+      name: 'Book 1',
+      author: 'Author 1',
+      available: 2
+    }, {
+      id: 1,
+      name: 'Book 2',
+      author: 'Author 2',
+      available: 3
+    }, {
+      id: 2,
+      name: 'Book 3',
+      author: 'Author 3',
+      available: 2
+    });
 	}
 
 	saveUser(): void {
@@ -121,6 +117,7 @@ export class AppComponent {
 	}
 	saveBorrowing(): void {
 		this.borrowings.push(this.borrowingForm.value);
+    this.borrowings[this.borrowings.length-1].id = this.borrowings.length - 1;
 		this.borrowingForm.reset();
 	}
 
