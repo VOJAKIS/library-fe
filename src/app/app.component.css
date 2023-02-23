@@ -1,0 +1,12 @@
+.refreshButton {
+	background-color: black;
+	color: white;
+	font-size: large;
+	padding: 4pt 8pt 3pt;
+}
+
+.fact {
+	font-size: larger;
+	width: 50%;
+	height: 40pt;
+}
