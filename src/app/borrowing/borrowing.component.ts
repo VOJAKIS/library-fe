@@ -12,7 +12,7 @@ export class BorrowingComponent {
 
 	borrowingForm: FormGroup;
 
-  borrowings: Array<Borrowing> = [];
+	borrowings: Array<Borrowing> = [];
 
   constructor() {
     this.borrowingForm = new FormGroup({
@@ -39,11 +39,11 @@ export class BorrowingComponent {
 		this.borrowingForm.reset();
 	}
 
-	deleteUser(index: number): void {
+	deleteBorrowing(index: number): void {
 		this.borrowings.splice(index, 1);
 	}
 	
-	editUser(index: number): void {
+	editBorrowing(index: number): void {
 		this.borrowingForm.setValue(this.borrowings[index]);
 	}
 

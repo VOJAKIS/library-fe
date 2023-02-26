@@ -17,10 +17,14 @@
 		<th>id</th>
 		<th>book</th>
 		<th>user</th>
-	</tr>
-	<tr *ngFor="let borrowing of borrowings">
+		<th>edit</th>
+		<th>delete</th>
+	</tr>	
+	<tr *ngFor="let borrowing of borrowings; let i = index">
 		<td>{{ borrowing.id }}</td>
 		<td>{{ borrowing.book }}</td>
 		<td>{{ borrowing.user }}</td>
+		<td><button (click)="editBorrowing(i)">Edit</button></td>
+		<td><button (click)="deleteBorrowing(i)">Delete</button></td>
 	</tr>
 </table>
