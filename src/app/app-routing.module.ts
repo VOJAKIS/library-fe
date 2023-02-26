@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BookComponent } from './book/book.component';
 
-const routes: Routes = [
-  {
-    path: 'books',
-    component: BookComponent
-  }
-];
+import { UserComponent } from './user/user.component';
+import { BorrowingComponent } from './borrowing/borrowing.component';
+
+const routes: Routes = [{
+  path: 'user',
+  component: UserComponent
+},
+{
+  path: 'borrowing',
+  component: BorrowingComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
