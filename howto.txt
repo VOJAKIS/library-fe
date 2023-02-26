@@ -1,0 +1,3 @@
+ng serve hinting error:
+PowerShell > admin
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
