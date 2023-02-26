@@ -5,17 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
-import { BookComponent } from './book/book.component';
-import { GenreComponent } from './genre/genre.component';
-import { BorrowingComponent } from './borrowing/borrowing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
-    BookComponent,
-    GenreComponent,
-    BorrowingComponent
+    UserComponent
   ],
   imports: [
     BrowserModule,

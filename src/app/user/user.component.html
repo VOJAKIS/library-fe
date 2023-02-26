@@ -4,13 +4,13 @@
 		<input type="number" formControlName="id">
 		<p class="invalid-text" *ngIf="userForm.controls['id'].invalid">Je nutné zadať ID.</p>
 	</label>
-	<label>name:
+	<label>first name:
 		<input type="text" formControlName="name">
 		<p class="invalid-text" *ngIf="userForm.controls['name'].invalid">Je nutné zadať meno.</p>
 	</label>
 	<label>contact:
-		<input type="text" formControlName="contact">
-		<p class="invalid-text" *ngIf="!userForm.controls['contact'].invalid">Je nutné zadať e-mail.</p>
+		<input type="text" formControlName="contactEmail">
+		<p class="invalid-text" *ngIf="userForm.controls['contactEmail'].invalid">Je nutné zadať e-mail.</p>
 	</label>
 	<button type="button" [disabled]="userForm.invalid" (click)="saveUser()">Pridaj</button>
 </form>
@@ -19,12 +19,14 @@
 	<tr>
 		<th>id</th>
 		<th>name</th>
-		<th>contact</th>
+		<th>contactEmail</th>
+		<th>edit</th>
+		<th>delete</th>
 	</tr>
 	<tr *ngFor="let user of users; let i = index">
 		<td>{{ user.id }}</td>
 		<td>{{ user.name }}</td>
-		<td>{{ user.contact }}</td>
+		<td>{{ user.contactEmail }}</td>
 		<td><button (click)="editUser(i)">Edit user</button></td>
 		<td><button (click)="deleteUser(i)">Delete user</button></td>
 	</tr>
