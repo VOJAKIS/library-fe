@@ -50,7 +50,7 @@ export class UserComponent {
 		this.users.splice(index, 1);
 	}
 	
-  editUser(index: number): void {
+	editUser(index: number): void {
 		this.userForm.setValue(this.users[index]);
 	}
 

@@ -1,0 +1,26 @@
+<h3>Borrowings</h3>
+<form [formGroup]="borrowingForm">
+	<label>id:
+		<input type="number" formControlName="id">
+	</label>
+	<label>book:
+		<input type="text" formControlName="book">
+	</label>
+	<label>user:
+		<input type="text" formControlName="user">
+	</label>
+	<button type="button" (click)="saveBorrowing()">Pridaj</button>
+</form>
+
+<table *ngIf="borrowings.length">
+	<tr>
+		<th>id</th>
+		<th>book</th>
+		<th>user</th>
+	</tr>
+	<tr *ngFor="let borrowing of borrowings">
+		<td>{{ borrowing.id }}</td>
+		<td>{{ borrowing.book }}</td>
+		<td>{{ borrowing.user }}</td>
+	</tr>
+</table>
