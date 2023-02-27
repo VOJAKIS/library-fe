@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { CategoryComponent } from './category/category.component';
 import { UserComponent } from './user/user.component';
 import { BorrowingComponent } from './borrowing/borrowing.component';
+import { BookComponent } from './book/book.component';
 
 const routes: Routes = [
   {
-    path: 'categories',
+    path: 'category',
     component: CategoryComponent
   },
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'borrowing',
     component: BorrowingComponent
+  },
+  {
+    path: 'book',
+    component: BookComponent
   }
 ];
 

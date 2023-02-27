@@ -13,10 +13,10 @@ export class BookComponent {
 
   constructor() {
     this.bookForm = new FormGroup({
-      id: new FormControl,
+      id: new FormControl(),
       name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       author: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      availability: new FormControl
+      availability: new FormControl()
     });
   }
 
