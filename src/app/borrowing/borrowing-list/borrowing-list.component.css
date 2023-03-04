@@ -1,0 +1,14 @@
+th {
+	text-align: left;
+}
+
+th, td {
+	table-layout: fixed;
+	border: black 1px solid;
+	padding: 4px 8px;
+}
+
+table {
+	border-collapse: collapse;
+	
+}
