@@ -1,15 +1,15 @@
-<form [formGroup]="form">
+<form [formGroup]="userForm">
 	<label>id:
 		<input type="number" formControlName="id">
-		<p class="invalid-text" *ngIf="form.controls['id'].invalid">Je nutné zadať ID.</p>
+		<p class="invalid-text" *ngIf="userForm.controls['id'].invalid">Je nutné zadať ID.</p>
 	</label>
 	<label>name:
 		<input type="text" formControlName="name">
-		<p class="invalid-text" *ngIf="form.controls['name'].invalid">Je nutné zadať meno.</p>
+		<p class="invalid-text" *ngIf="userForm.controls['name'].invalid">Je nutné zadať meno.</p>
 	</label>
 	<label>contact:
 		<input type="text" formControlName="contactEmail">
-		<p class="invalid-text" *ngIf="form.controls['contactEmail'].invalid">Je nutné zadať e-mail.</p>
+		<p class="invalid-text" *ngIf="userForm.controls['contactEmail'].invalid">Je nutné zadať e-mail.</p>
 	</label>
-	<button type="button" [disabled]="form.invalid" (click)="saveUser()">Pridaj</button>
+	<button type="button" [disabled]="userForm.invalid" (click)="saveUser()">Pridaj</button>
 </form>

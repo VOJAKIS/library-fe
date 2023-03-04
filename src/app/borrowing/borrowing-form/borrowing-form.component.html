@@ -1,0 +1,12 @@
+<form [formGroup]="borrowingForm">
+	<label>id:
+		<input type="number" formControlName="id">
+	</label>
+	<label>book:
+		<input type="number" formControlName="bookId">
+	</label>
+	<label>user:
+		<input type="number" formControlName="userId">
+	</label>
+	<button [disabled]="borrowingForm.invalid" type="button" (click)="saveBorrowing()">Pridaj</button>
+</form>

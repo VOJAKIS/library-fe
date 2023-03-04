@@ -12,6 +12,8 @@ import { BorrowingComponent } from './borrowing/borrowing.component';
 import { BookComponent } from './book/book.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserListComponent } from './user/user-list/user-list.component';
+import { BorrowingFormComponent } from './borrowing/borrowing-form/borrowing-form.component';
+import { BorrowingListComponent } from './borrowing/borrowing-list/borrowing-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { UserListComponent } from './user/user-list/user-list.component';
     BorrowingComponent,
     BookComponent,
     UserFormComponent,
-    UserListComponent
+    UserListComponent,
+    BorrowingFormComponent,
+    BorrowingListComponent
   ],
   imports: [
     BrowserModule,

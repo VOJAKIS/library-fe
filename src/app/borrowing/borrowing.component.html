@@ -1,30 +1,13 @@
 <h3>Borrowings</h3>
-<form [formGroup]="borrowingForm">
-	<label>id:
-		<input type="number" formControlName="id">
-	</label>
-	<label>book:
-		<input type="text" formControlName="book">
-	</label>
-	<label>user:
-		<input type="text" formControlName="user">
-	</label>
-	<button [disabled]="borrowingForm.invalid" type="button" (click)="saveBorrowing()">Pridaj</button>
-</form>
 
-<table *ngIf="borrowings.length">
-	<tr>
-		<th>id</th>
-		<th>book</th>
-		<th>user</th>
-		<th>edit</th>
-		<th>delete</th>
-	</tr>	
-	<tr *ngFor="let borrowing of borrowings; let i = index">
-		<td>{{ borrowing.id }}</td>
-		<td>{{ borrowing.book }}</td>
-		<td>{{ borrowing.user }}</td>
-		<td><button (click)="editBorrowing(i)">Edit</button></td>
-		<td><button (click)="deleteBorrowing(i)">Delete</button></td>
-	</tr>
-</table>
+<app-borrowing-form
+	[borrowingData]="borrowing"
+	(formCreate)="createBorrowing($event)"
+	(formUpdate)="updateBorrowing($event)"
+></app-borrowing-form>
+
+<app-borrowing-list
+	[borrowings]="borrowings"
+	(borrowingToUpdate)="selectBorrowingToUpdate($event)"
+	(borrowingToDelete)="deleteBorrowing($event)"
+></app-borrowing-list>

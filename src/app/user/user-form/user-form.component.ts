@@ -10,13 +10,12 @@ import { User } from 'app/model/user.model';
 })
 export class UserFormComponent {
 
-  form: FormGroup;
+  userForm: FormGroup;
 
   @Input()
   set userData(user: User | undefined) {
-    console.log(user);
     if (user) {
-      this.form.setValue(user);
+      this.userForm.setValue(user);
     }
   }
 
@@ -27,7 +26,7 @@ export class UserFormComponent {
   formUpdate = new EventEmitter<User>();
 
   constructor() {
-    this.form = new FormGroup({
+    this.userForm = new FormGroup({
       id: new FormControl(0, Validators.required),
 			name: new FormControl('Adam', [Validators.required, Validators.pattern('[a-zA-Z]*')]),
 			contactEmail: new FormControl('asd@mil.com', [Validators.required, Validators.email])
@@ -35,21 +34,21 @@ export class UserFormComponent {
   }
 
   saveUser(): void {
-		if (this.form.valid) {
-      if (this.form.controls['id'].value) {
-        this.formUpdate.emit(this.prepareUser(this.form.controls['id'].value));
+		if (this.userForm.valid) {
+      if (this.userForm.controls['id'].value) {
+        this.formUpdate.emit(this.prepareUser(this.userForm.controls['id'].value));
       } else {
         this.formCreate.emit(this.prepareUser());
       }
-      this.form.reset();
+      this.userForm.reset();
     }
 	}
 
   private prepareUser(userId?: number): User {
     return {
       id: userId !== undefined ? userId : Date.now(),
-      name: this.form.controls['name'].value,
-      contactEmail: this.form.controls['contactEmail'].value
+      name: this.userForm.controls['name'].value,
+      contactEmail: this.userForm.controls['contactEmail'].value
     }
   }
 
