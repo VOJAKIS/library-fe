@@ -1,27 +1,9 @@
-<ng-container>
-    <h3>Žánre</h3>
-    <form [formGroup]="categoryForm" class="CategoryForm">
-        <p class="FormActionText">{{ formSelectedControlName }}</p>
-        <!-- <label>ID:</label>
-        <input type="number" name="Category ID" placeholder="ID žánru..." formControlName="id">
-        <p *ngIf="categoryForm.controls['id'].errors?.['required']" class="ErrorMessage">Zadajte ID žánru.</p> -->
-        <label>Názov žánru:</label>
-        <input type="text" name="Category Name" placeholder="Názov žánru..." formControlName="name">
-        <p *ngIf="categoryForm.controls['name'].errors?.['required']" class="ErrorMessage">Zadajte názov žánru (minimálna dĺžka žánru sú 3 znaky).</p>
-        <button (click)="addCategory()" [disabled]="categoryForm.invalid">Pridať žáner</button>
-    </form>
-    <table *ngIf="categories.length">
-        <tr>
-            <th>ID</th>
-            <th>Názov žánru</th>
-        </tr>
-        <tr *ngFor="let category of categories; let i = index">
-            <td>{{ category.id }}</td>
-            <td>{{ category.name }}</td>
-            <td>
-                <button (click)="editCategory(i)">Upraviť</button>
-                <button (click)="deleteCategory(i)">Vymazať</button>
-            </td>
-        </tr>
-    </table>
-</ng-container>
+<h3>Žánre</h3>
+<app-category-form [categoryData]="category"
+                   (formCreate)="createCategory($event)"
+                   (formUpdate)="updateCategory($event)"
+></app-category-form>
+<app-category-list [categories]="categories"
+                   (categoryToUpdate)="selectCategoryToUpdate($event)"
+                   (categoryToDelete)="deleteCategory($event)"
+></app-category-list>

@@ -1,0 +1,35 @@
+.BookForm {
+    position: relative;
+    min-height: 300px;
+    border: 1px solid #000;
+    min-width: 200px;
+    margin: 0 auto;
+    width: 70vmin;
+    padding: 0 10px 10px;
+}
+.FormActionText {
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+}
+.BookForm > button {
+    position: relative;
+    display: block;
+    bottom: 10px;
+    margin: 50px auto 0;
+}
+.BookForm > label  {
+    display: block;
+    min-width: 10%;
+    padding-right: 10px;
+}
+.BookForm > input {
+    margin: 10px 0;
+}
+
+.ErrorMessage {
+    color: #f00;
+    font-style: italic;
+    line-height: 15px;
+}

@@ -1,37 +1,9 @@
 <h3>Knihy</h3>
-<form [formGroup]="bookForm" class="BookForm">
-    <p class="FormActionText">{{ formSelectedControlName }}</p>
-    <!-- <label>ID:</label>
-    <input type="number" name="Category ID" placeholder="ID žánru..." formControlName="id">
-    <p *ngIf="bookForm.controls['id'].errors?.['required']" class="ErrorMessage">Zadajte ID žánru.</p> -->
-    <label>Názov knihy:</label>
-    <input type="text" name="Category Name" placeholder="Názov knihy" formControlName="name">
-    <p *ngIf="bookForm.controls['name'].errors?.['required']" class="ErrorMessage">Zadajte názov žánru (minimálna dĺžka žánru sú 3 znaky).</p>
-
-    <label>Meno autora:</label>
-    <input type="text" name="Author Name" placeholder="Meno autora" formControlName="author">
-    <p *ngIf="bookForm.controls['author'].errors?.['required']" class="ErrorMessage">Zadajte meno autora (minimálna dĺžka žánru sú 3 znaky).</p>
-
-    <label>Dostupnosť:</label>
-    <input type="checkbox" name="Availability selection" formControlName="availability">
-
-    <button (click)="addBook()" [disabled]="bookForm.invalid">Odoslať</button>
-</form>
-<table *ngIf="books.length">
-    <tr>
-        <th>ID</th>
-        <th>Názov žánru</th>
-        <th>Meno autora</th>
-        <th>Dostupnosť</th>
-    </tr>
-    <tr *ngFor="let book of books; let i = index">
-        <td>{{ book.id }}</td>
-        <td>{{ book.name }}</td>
-        <td>{{ book.author }}</td>
-        <td>{{ book.availability == true ? 'Dostupná' : 'Nedostupná'}}</td>
-        <td>
-            <button (click)="editBook(i)">Upraviť</button>
-            <button (click)="deleteBook(i)">Vymazať</button>
-        </td>
-    </tr>
-</table>
+<app-book-form [bookData]="book"
+               (formCreate)="createBook($event)"
+               (formUpdate)="updateBook($event)"
+></app-book-form>
+<app-book-list [books]="books"
+               (bookToUpdate)="selectBookToUpdate($event)"
+               (bookToDelete)="deleteBook($event)"
+></app-book-list>

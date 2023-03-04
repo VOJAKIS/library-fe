@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Book } from 'app/model/book.model';
 
 @Component({
   selector: 'app-book',
@@ -8,48 +8,32 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class BookComponent {
 
-  bookForm: FormGroup;
-  formSelectedControlName = 'Pridať novú knihu';
 
-  constructor() {
-    this.bookForm = new FormGroup({
-      id: new FormControl(),
-      name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      author: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      availability: new FormControl()
-    });
+  books: Array<Book> = [];
+  book?: Book; 
+
+  createBook(book : Book) : void {
+    this.books.push(book);
   }
 
-  books: Array<{
-    id: number,
-    name: string,
-    author: string,
-    availability: boolean
-  }> = [];
-
-  addBook() : void {
-    this.formSelectedControlName = 'Pridať novú knihu';
-    if (this.bookForm.controls['id'].value) {
-      const index = this.books.findIndex(person => person['id'] === this.bookForm.controls['id'].value);
-      if (index !== -1) { this.books[index] = this.bookForm.value; }
-    } else {
-      this.books.push({
-        id: Date.now(),
-        name: this.bookForm.controls['name'].value,
-        author: this.bookForm.controls['author'].value,
-        availability: this.bookForm.controls['availability'].value
-      });
+  updateBook(book : Book) : void {
+    const index = this.books.findIndex(book => book.id === book.id);
+    if(index !== -1) {
+      this.books[index] = book;
+      this.book = undefined;
     }
-    this.bookForm.reset();
+  }
+  
+  selectBookToUpdate(bookId : number) : void {
+    this.book = this.books.find(book => book.id === bookId);
   }
 
-  editBook(index: number): void {
-    this.formSelectedControlName = 'Úprava žánru #' + this.books[index].id;
-    this.bookForm.setValue(this.books[index]);
+  deleteBook(bookId : number) : void {
+    const index = this.books.findIndex(book => book.id === bookId);
+    if(index !== -1) {
+      this.books.splice(index, 1);
+    }
   }
 
-  deleteBook(index: number): void {
-    this.books.splice(index, 1);
-  }
 
 }
