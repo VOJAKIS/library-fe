@@ -1,0 +1,16 @@
+<table *ngIf="borrowings.length">
+	<tr>
+		<th>id</th>
+		<th>book</th>
+		<th>user</th>
+		<th>edit</th>
+		<th>delete</th>
+	</tr>	
+	<tr *ngFor="let borrowing of borrowings; let i = index">
+		<td>{{ borrowing.id }}</td>
+		<td>{{ borrowing.bookId }}</td>
+		<td>{{ borrowing.userId }}</td>
+		<td><button (click)="updateBorrowing(borrowing.id)">Edit</button></td>
+		<td><button (click)="deleteBorrowing(borrowing.id)">Delete</button></td>
+	</tr>
+</table>

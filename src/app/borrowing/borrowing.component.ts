@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Borrowing } from 'app/model/borrowing.model'
 
 @Component({
@@ -7,45 +6,39 @@ import { Borrowing } from 'app/model/borrowing.model'
   templateUrl: './borrowing.component.html',
   styleUrls: ['./borrowing.component.css']
 })
-
 export class BorrowingComponent {
-	lastIndex: number = 0;
 
-	borrowingForm: FormGroup;
+	borrowing?: Borrowing;
 
 	borrowings: Array<Borrowing> = [];
 
-  constructor() {
-    this.borrowingForm = new FormGroup({
-			id: new FormControl(null, [Validators.required]),
-			book: new FormControl(null, [Validators.required]),
-			user: new FormControl(null, [Validators.required]),
-		})
-  }
-
-  saveBorrowing(): void {
-		let values = this.borrowingForm.value;
-		
-		for (let i = 0; i<this.borrowings.length; i++) {
-			if (this.borrowingForm.value.id == this.borrowings[i].id) {
-				this.borrowings[i].book = values.book;
-				this.borrowings[i].user = values.user;
-				this.borrowingForm.reset();
-				return;
-			}
-		}
-		
-		values.id = this.lastIndex++;
-		this.borrowings.push(values);
-		this.borrowingForm.reset();
+	constructor () {
+		// this.borrowings.push({id:1677955020379, bookId:1677955023794, userId:1677955023684});
 	}
 
-	deleteBorrowing(index: number): void {
-		this.borrowings.splice(index, 1);
+	createBorrowing(borrowing: Borrowing): void {
+		this.borrowings.push(borrowing);
+		console.log('BORROWINGS: ', this.borrowings);
+	}
+
+	updateBorrowing(borrowing: Borrowing): void {
+		const index = this.borrowings.findIndex(borrowingcik => borrowingcik.id === borrowing.id);
+		if (index !== -1) {
+			this.borrowings[index] = borrowing;
+			this.borrowing = undefined;
+		}
+	}
+
+	selectBorrowingToUpdate(borrowingId: number): void {
+		this.borrowing = this.borrowings.find(borrowing => borrowing.id === borrowingId);
+	}
+
+	deleteBorrowing(borrowingId: number): void {
+		const index = this.borrowings.findIndex(borrowing => borrowing.id === borrowingId);
+		if (index !== -1) {
+			this.borrowings.splice(index, 1);
+			console.log('DELETED USER with ID: ', borrowingId);
+		}
 	}
 	
-	editBorrowing(index: number): void {
-		this.borrowingForm.setValue(this.borrowings[index]);
-	}
-
 }
