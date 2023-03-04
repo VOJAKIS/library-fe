@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Borrowing } from 'app/model/borrowing.model'
 
 @Component({
@@ -7,6 +7,7 @@ import { Borrowing } from 'app/model/borrowing.model'
   templateUrl: './borrowing.component.html',
   styleUrls: ['./borrowing.component.css']
 })
+
 export class BorrowingComponent {
 	lastIndex: number = 0;
 
@@ -16,9 +17,9 @@ export class BorrowingComponent {
 
   constructor() {
     this.borrowingForm = new FormGroup({
-			id: new FormControl(),
-			book: new FormControl(),
-			user: new FormControl(),
+			id: new FormControl(null, [Validators.required]),
+			book: new FormControl(null, [Validators.required]),
+			user: new FormControl(null, [Validators.required]),
 		})
   }
 
@@ -27,8 +28,8 @@ export class BorrowingComponent {
 		
 		for (let i = 0; i<this.borrowings.length; i++) {
 			if (this.borrowingForm.value.id == this.borrowings[i].id) {
-				this.borrowings[i].book = values.name;
-				this.borrowings[i].book = values.contactEmail;
+				this.borrowings[i].book = values.book;
+				this.borrowings[i].user = values.user;
 				this.borrowingForm.reset();
 				return;
 			}

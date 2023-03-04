@@ -9,7 +9,7 @@
 	<label>user:
 		<input type="text" formControlName="user">
 	</label>
-	<button type="button" (click)="saveBorrowing()">Pridaj</button>
+	<button [disabled]="borrowingForm.invalid" type="button" (click)="saveBorrowing()">Pridaj</button>
 </form>
 
 <table *ngIf="borrowings.length">

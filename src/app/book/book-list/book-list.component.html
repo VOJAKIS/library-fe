@@ -1,0 +1,19 @@
+<table *ngIf="books.length">
+    <tr>
+        <th>ID</th>
+        <th>Názov žánru</th>
+        <th>Meno autora</th>
+        <th>Dostupnosť</th>
+        <th>Funkcie</th>
+    </tr>
+    <tr *ngFor="let book of books">
+        <td>{{ book.id }}</td>
+        <td>{{ book.name }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.availability === true ? 'Dostupná' : 'Nedostupná'}}</td>
+        <td>
+            <button (click)="updateBook(book.id)">Upraviť</button>
+            <button (click)="deleteBook(book.id)">Vymazať</button>
+        </td>
+    </tr>
+</table>
