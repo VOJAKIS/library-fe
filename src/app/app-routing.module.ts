@@ -21,6 +21,11 @@ const routes: Routes = [
   {
     path: 'book',
     component: BookComponent
+  },
+  { // Wildcard routes, ak ani jedna nesedí, tak choď na túto url adresu / vyrenderuj tento component
+    path: '**',
+    component: UserComponent,
+    redirectTo: ''
   }
 ];
 

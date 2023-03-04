@@ -10,6 +10,8 @@ import { UserComponent } from './user/user.component';
 import { BorrowingComponent } from './borrowing/borrowing.component';
 
 import { BookComponent } from './book/book.component';
+import { UserFormComponent } from './user/user-form/user-form.component';
+import { UserListComponent } from './user/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { BookComponent } from './book/book.component';
     CategoryComponent,
     UserComponent,
     BorrowingComponent,
-    BookComponent
+    BookComponent,
+    UserFormComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

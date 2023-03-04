@@ -1,33 +1,13 @@
 <h3>Users</h3>
-<form [formGroup]="userForm">
-	<label>id:
-		<input type="number" formControlName="id">
-		<p class="invalid-text" *ngIf="userForm.controls['id'].invalid">Je nutné zadať ID.</p>
-	</label>
-	<label>name:
-		<input type="text" formControlName="name">
-		<p class="invalid-text" *ngIf="userForm.controls['name'].invalid">Je nutné zadať meno.</p>
-	</label>
-	<label>contact:
-		<input type="text" formControlName="contactEmail">
-		<p class="invalid-text" *ngIf="userForm.controls['contactEmail'].invalid">Je nutné zadať e-mail.</p>
-	</label>
-	<button type="button" [disabled]="userForm.invalid" (click)="saveUser()">Pridaj</button>
-</form>
 
-<table *ngIf="users.length">
-	<tr>
-		<th>id</th>
-		<th>name</th>
-		<th>contactEmail</th>
-		<th>edit</th>
-		<th>delete</th>
-	</tr>
-	<tr *ngFor="let user of users; let i = index">
-		<td>{{ user.id }}</td>
-		<td>{{ user.name }}</td>
-		<td>{{ user.contactEmail }}</td>
-		<td><button (click)="editUser(i)">Edit user</button></td>
-		<td><button (click)="deleteUser(i)">Delete user</button></td>
-	</tr>
-</table>
+<app-user-form
+	(formCreate)="createUser($event)"
+	(userData)="user"
+></app-user-form>
+
+<app-user-list
+	[users]="users"
+	(userToUpdate)="selectUserToUpdate($event)"
+	(userToDelete)="deleteUser($event)"
+></app-user-list>
+

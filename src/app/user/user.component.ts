@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'app/model/user.model';
 
 @Component({
@@ -9,18 +8,11 @@ import { User } from 'app/model/user.model';
 })
 export class UserComponent {
 
-	lastIndex: number = 0;
-  userForm: FormGroup;
+	user?: User;
 
   users: Array<User> = [];
 
   constructor() {
-		this.userForm = new FormGroup({
-			id: new FormControl(null, [Validators.required, Validators.min(0)]),
-			name: new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z]*')]),
-			contactEmail: new FormControl(null, [Validators.required, Validators.email])
-		})
-
 		// TESTING
 		/* this.users.push(
 			{id: 0, name: 'Adam', contactEmail: 'adam@gmail.com'},
@@ -29,29 +21,28 @@ export class UserComponent {
 		); */
   }
 
-  saveUser(): void {
-		let values = this.userForm.value;
-		
-		for (let i = 0; i<this.users.length; i++) {
-			if (this.userForm.value.id == this.users[i].id) {
-				this.users[i].name = values.name;
-				this.users[i].contactEmail = values.contactEmail;
-				this.userForm.reset();
-				return;
-			}
-		}
-		
-		values.id = this.lastIndex++;
-		this.users.push(values);
-		this.userForm.reset();
+  createUser(user: User): void {
+		this.users.push(user);
+		console.log('USERS: ', this.users);
 	}
 
-	deleteUser(index: number): void {
-		this.users.splice(index, 1);
+
+	updateUser(user: User): void {
+
 	}
-	
-	editUser(index: number): void {
-		this.userForm.setValue(this.users[index]);
+
+	selectUserToUpdate(userId: number): void {
+		this.users.find(user => user.id === userId);
+		console.log('SELECTED USER TO UPDATE');
+	}
+
+
+	deleteUser(userId: number): void {
+		const index = this.users.findIndex(users => users.id === userId);
+		if (index !== -1) {
+			this.users.splice(index, 1);
+			console.log('DELETED USER with ID: ', userId);
+		}
 	}
 
 }
