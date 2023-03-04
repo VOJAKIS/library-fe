@@ -12,6 +12,8 @@ import { BorrowingComponent } from './borrowing/borrowing.component';
 import { BookComponent } from './book/book.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { BookFormComponent } from './book/book-form/book-form.component';
+import { CategoryFormComponent } from './category/category-form/category-form.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { BookFormComponent } from './book/book-form/book-form.component';
     BorrowingComponent,
     BookComponent,
     BookListComponent,
-    BookFormComponent
+    BookFormComponent,
+    CategoryFormComponent,
+    CategoryListComponent
   ],
   imports: [
     BrowserModule,

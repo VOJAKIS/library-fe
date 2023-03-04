@@ -1,0 +1,15 @@
+<table *ngIf="categories.length">
+    <tr>
+        <th>ID</th>
+        <th>Názov žánru</th>
+        <th>Funkcie</th>
+    </tr>
+    <tr *ngFor="let category of categories">
+        <td>{{ category.id }}</td>
+        <td>{{ category.name }}</td>
+        <td>
+            <button (click)="updateCategory(category.id)">Upraviť</button>
+            <button (click)="deleteCategory(category.id)">Vymazať</button>
+        </td>
+    </tr>
+</table>

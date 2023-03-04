@@ -1,0 +1,13 @@
+<form [formGroup]="categoryForm" class="CategoryForm" (submit)="createCategory()">
+    <p class="FormActionText">Žáner</p>
+    <!-- <label>ID:</label>
+    <input type="number" name="Category ID" placeholder="ID žánru..." formControlName="id">
+    <p *ngIf="categoryForm.controls['id'].errors?.['required']" class="ErrorMessage">Zadajte ID žánru.</p> -->
+    
+    <label>Názov žánru:</label>
+    <input type="text" name="Category Name" placeholder="Názov žánru..." formControlName="name">
+    <p *ngIf="categoryForm.controls.name.errors?.required" class="ErrorMessage">Zadajte názov žánru.</p>
+    <p *ngIf="categoryForm.controls.name.errors?.minlength" class="ErrorMessage">(minimálna dĺžka žánru sú 3 znaky).</p>
+    
+    <button [disabled]="categoryForm.invalid">Pridať žáner</button>
+</form>
