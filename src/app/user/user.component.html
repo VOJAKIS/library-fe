@@ -1,7 +1,7 @@
 <h3>Users</h3>
 
 <app-user-form
-	(userData)="user"
+	[userData]="user"
 	(formCreate)="createUser($event)"
 	(formUpdate)="updateUser($event)"
 ></app-user-form>

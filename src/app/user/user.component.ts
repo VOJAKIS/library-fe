@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { User } from 'app/model/user.model';
 
 @Component({
@@ -30,10 +30,7 @@ export class UserComponent {
 	}
 
 	selectUserToUpdate(userId: number): void {
-		console.log(userId);
-		console.log(this.user);
 		this.user = this.users.find(user => user.id === userId);
-		console.log(this.user);
 	}
 
 	deleteUser(userId: number): void {
