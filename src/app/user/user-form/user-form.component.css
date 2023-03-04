@@ -1,0 +1,9 @@
+label, input {
+	display: block;
+	margin-top: 8px;
+}
+
+button {
+	margin-top: 4px;
+	margin-bottom: 4px;
+}

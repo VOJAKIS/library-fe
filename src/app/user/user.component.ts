@@ -1,41 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { User } from 'app/model/user.model';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+	selector: 'app-user',
+	templateUrl: './user.component.html',
+	styleUrls: ['./user.component.css']
 })
 export class UserComponent {
 
 	user?: User;
 
-  users: Array<User> = [];
+	users: Array<User> = [];
 
-  constructor() {
-		// TESTING
-		/* this.users.push(
-			{id: 0, name: 'Adam', contactEmail: 'adam@gmail.com'},
-			{id: 1, name: 'Jakub', contactEmail: 'jakub@gmail.com'},
-			{id: 2, name: 'Lucka', contactEmail: 'lucka@gmail.com'}
-		); */
-  }
+	constructor () {
+		this.users.push({id:1677955020379,name:'Adam',contactEmail:'Valo@gmail.com'});
+	}
 
-  createUser(user: User): void {
+	createUser(user: User): void {
 		this.users.push(user);
 		console.log('USERS: ', this.users);
 	}
 
-
 	updateUser(user: User): void {
-
+		const index = this.users.findIndex(userik => userik.id === user.id);
+		if (index !== -1) {
+			this.users[index] = user;
+			this.user = undefined;
+		}
 	}
 
 	selectUserToUpdate(userId: number): void {
-		this.users.find(user => user.id === userId);
-		console.log('SELECTED USER TO UPDATE');
+		console.log(userId);
+		console.log(this.user);
+		this.user = this.users.find(user => user.id === userId);
+		console.log(this.user);
 	}
-
 
 	deleteUser(userId: number): void {
 		const index = this.users.findIndex(users => users.id === userId);

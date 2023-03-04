@@ -19,6 +19,7 @@ export class UserListComponent {
   userToDelete = new EventEmitter<number>();
 
   updateUser(userId: number): void {
+    console.log(userId);
 		this.userToUpdate.emit(userId);
 	}
 
