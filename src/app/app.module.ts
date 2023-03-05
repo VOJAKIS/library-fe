@@ -29,7 +29,7 @@ import { BorrowingListComponent } from './borrowing/borrowing-list/borrowing-lis
     BookListComponent,
     BookFormComponent,
     CategoryFormComponent,
-    CategoryListComponent
+    CategoryListComponent,
     UserFormComponent,
     UserListComponent,
     BorrowingFormComponent,
