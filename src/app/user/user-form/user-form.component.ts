@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { User } from 'app/model/user.model';
+import { User } from 'app/common/model/user.model';
 
 @Component({
   selector: 'app-user-form',
@@ -28,8 +28,8 @@ export class UserFormComponent {
   constructor() {
     this.userForm = new FormGroup({
       id: new FormControl(0, Validators.required),
-			name: new FormControl('Adam', [Validators.required, Validators.pattern('[a-zA-Z]*')]),
-			contactEmail: new FormControl('asd@mil.com', [Validators.required, Validators.email])
+			firstName: new FormControl('Adam', [Validators.required, Validators.pattern('[a-zA-Z]*')]),
+			lastName: new FormControl('asd@mil.com', [Validators.required])
 		})
   }
 
@@ -47,8 +47,8 @@ export class UserFormComponent {
   private prepareUser(userId?: number): User {
     return {
       id: userId !== undefined ? userId : Date.now(),
-      name: this.userForm.controls['name'].value,
-      contactEmail: this.userForm.controls['contactEmail'].value
+      firstName: this.userForm.controls['firstName'].value,
+      lastName: this.userForm.controls['lastName'].value
     }
   }
 

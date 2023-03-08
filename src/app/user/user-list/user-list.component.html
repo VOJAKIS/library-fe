@@ -8,8 +8,8 @@
 	</tr>
 	<tr *ngFor="let user of users; let i = index">
 		<td>{{ user.id }}</td>
-		<td>{{ user.name }}</td>
-		<td>{{ user.contactEmail }}</td>
+		<td>{{ user.firstName }}</td>
+		<td>{{ user.lastName }}</td>
 		<td><button (click)="updateUser(user.id)">Edit</button></td>
 		<td><button (click)="deleteUser(user.id)">Delete</button></td>
 	</tr>

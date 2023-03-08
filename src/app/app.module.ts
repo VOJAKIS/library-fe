@@ -19,6 +19,8 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { BorrowingFormComponent } from './borrowing/borrowing-form/borrowing-form.component';
 import { BorrowingListComponent } from './borrowing/borrowing-list/borrowing-list.component';
 
+import { HttpClientModule } from '@angular/common/http'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,8 @@ import { BorrowingListComponent } from './borrowing/borrowing-list/borrowing-lis
     BrowserModule,
     AppRoutingModule, // cez ng generate module app-routing --flat --module=app, aleob pri vytváraní projektu
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
