@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Category } from 'app/model/category';
+import { CategoryService } from './category.service';
 
 @Component({
   selector: 'app-category',
@@ -8,32 +9,40 @@ import { Category } from 'app/model/category';
 })
 export class CategoryComponent {
 
+  constructor(private service: CategoryService) {
+    this.getCategories();
+  }
 
   categories: Array<Category> = [];
   category? : Category;
 
-
-  createCategory(category: Category): void {
-    this.categories.push(category);
-  }
-
-  updateCategory(category: Category): void {
-    const index = this.categories.findIndex(category => category.id === category.id);
-    if (index !== -1) {
-      this.categories[index] = category;
-      this.category = undefined;
-    }
+  getCategories() : void {
+    this.service.getCategories().subscribe((categories : Category[]) => { this.categories = categories });
   }
 
   selectCategoryToUpdate(categoryId: number): void {
-    this.category = this.categories.find(category => category.id === categoryId);
+    this.service.getCategory(categoryId).subscribe((category: Category) => { this.category = category });
+  }
+
+  createCategory(category: Category): void {
+    this.service.createCategory(category).subscribe(() => {
+      console.log('Žáner bol vytvorený.');
+      this.getCategories();
+    });
+  }
+
+  updateCategory(category: Category): void {
+    this.service.updateCategory(category).subscribe(() => {
+      console.log('Žáner bol aktualizovaný.');
+      this.getCategories();
+    });
   }
 
   deleteCategory(categoryId: number): void {
-    const index = this.categories.findIndex(category => category.id === categoryId);
-    if (index !== -1) {
-      this.categories.splice(index, 1);
-    }
+    this.service.deleteCategory(categoryId).subscribe(() => {
+      console.log('Žáner bol vymazaný.');
+      this.getCategories();
+    });
   }
 
 }
