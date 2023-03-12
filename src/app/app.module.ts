@@ -18,6 +18,7 @@ import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { BorrowingFormComponent } from './borrowing/borrowing-form/borrowing-form.component';
 import { BorrowingListComponent } from './borrowing/borrowing-list/borrowing-list.component';
+import { UserService } from './user/user.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { BorrowingListComponent } from './borrowing/borrowing-list/borrowing-lis
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
