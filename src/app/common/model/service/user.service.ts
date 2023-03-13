@@ -8,7 +8,7 @@ import { User } from 'app/common/model/user.model';
 })
 export class UserService {
 
-  private url = 'http://labs.fpv.umb.sk:8080/api/customers/';
+  private url = 'http://localhost:8080/api/customers';
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.url);
@@ -30,5 +30,5 @@ export class UserService {
     return this.http.delete<void>(`${this.url}/${userId}`);
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 }

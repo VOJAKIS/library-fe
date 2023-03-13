@@ -8,7 +8,7 @@ import { Book } from 'app/common/model/book.model';
 })
 export class BookService {
 
-  private url = 'http://labs.fpv.umb.sk:8081/api/book';
+  private url = 'http://localhost:8080/api/books';
 
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.url);

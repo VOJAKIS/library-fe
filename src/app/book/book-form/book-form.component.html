@@ -4,14 +4,20 @@
     <input type="number" name="Category ID" placeholder="ID žánru..." formControlName="id">
     <p *ngIf="bookForm.controls['id'].errors?.['required']" class="ErrorMessage">Zadajte ID žánru.</p> -->
     <label>Názov knihy:</label>
-    <input type="text" name="Category Name" placeholder="Názov knihy" formControlName="name">
-    <p *ngIf="bookForm.controls.name.errors?.required" class="ErrorMessage">Zadajte názov žánru.</p>
-    <p *ngIf="bookForm.controls.name.errors?.minlength" class="ErrorMessage">(minimálna dĺžka žánru sú 3 znaky).</p>
+    <input type="text" name="Category Name" placeholder="Názov knihy" formControlName="title">
+    <p *ngIf="bookForm.controls.title.errors?.required" class="ErrorMessage">Zadajte názov žánru.</p>
+    <p *ngIf="bookForm.controls.title.errors?.minlength" class="ErrorMessage">(minimálna dĺžka žánru sú 3 znaky).</p>
 
     <label>Meno autora:</label>
-    <input type="text" name="Author Name" placeholder="Meno autora" formControlName="author">
-    <p *ngIf="bookForm.controls.author.errors?.required" class="ErrorMessage">Zadajte meno autora.</p>
-    <p *ngIf="bookForm.controls.author.errors?.minlength" class="ErrorMessage">(minimálna dĺžka mena autora sú 3 znaky).</p>
+    <input type="text" name="Author Name" placeholder="Meno autora" formControlName="authorFirstName">
+    <p *ngIf="bookForm.controls.authorFirstName.errors?.required" class="ErrorMessage">Zadajte meno autora.</p>
+    <p *ngIf="bookForm.controls.authorFirstName.errors?.minlength" class="ErrorMessage">(minimálna dĺžka mena autora sú 3 znaky).</p>
+
+	<label>Priezvisko autora:</label>
+    <input type="text" name="Author Name" placeholder="Priezvisko autora" formControlName="authorLastName">
+	
+	<label>Žánre:</label>
+    <input type="text" name="Author Name" placeholder="Kategórie" formControlName="categories">
 
     <label>Dostupnosť:</label>
     <input type="checkbox" name="Availability selection" formControlName="availability">

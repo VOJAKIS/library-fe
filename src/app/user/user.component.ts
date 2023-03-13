@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { User } from 'app/common/model/user.model';
-import { UserService } from '../common/model/service/user.service';
+import { UserService } from 'app/common/model/service/user.service';
 
 @Component({
 	selector: 'app-user',
@@ -13,37 +14,41 @@ export class UserComponent {
 
 	users: Array<User> = [];
 
-	constructor (private service : UserService) {
-		this.users.push({id:1677955020379,name:'Adam',contactEmail:'Valo@gmail.com'});
+	constructor(private service: UserService) {
+		this.getUsers();
 	}
 
-	getPersons(): void {
-		this.service.getUsers().subscribe((users: User[]) => { this.users = users });
+	getUsers(): void {
+		this.service.getUsers().subscribe((users: User[]) => {
+			this.users = users;
+		});
 	}
 
 	createUser(user: User): void {
-		this.service.createUser(user).subscribe(() => {
-			console.log('Osoba bola uložená.');
-			this.getPersons();
-		});
-	}
-
-	updateUser(user: User): void {
-		this.service.updateUser(user).subscribe(() => {
-			console.log('Osoba bola úspešne zmenená.');
-			this.getPersons();
-		});
+		this.service.createUser(user).subscribe(user => {
+			console.log('Osoba bola úspešne uložená.');
+			this.getUsers();
+		})
 	}
 
 	selectUserToUpdate(userId: number): void {
-		this.service.getUser(userId).subscribe((user: User) => { this.user = user });
-	}
-
-	deleteUser(userId: number): void {
-		this.service.deleteUser(userId).subscribe(() => {
-			console.log('Osoba bola úspešne zmazaná.');
-			this.getPersons();
+		this.service.getUser(userId).subscribe((user: User) => {
+			this.user = user;
+		})
+	 }
+	 	
+	updateUser(user: User): void {
+		this.service.updateUser(user).subscribe(() => {
+		  	console.log('Žáner bol aktualizovaný.');
+		  	this.getUsers();
 		});
 	}
+	
+	  deleteUser(userId: number): void {
+		this.service.deleteUser(userId).subscribe(() => {
+		  console.log('Žáner bol vymazaný.');
+		  this.getUsers();
+		});
+	  }
 
 }

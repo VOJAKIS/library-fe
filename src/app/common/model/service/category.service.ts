@@ -8,7 +8,7 @@ import { Category } from 'app/common/model/category.model';
 })
 export class CategoryService {
 
-  private url = 'http://labs.fpv.umb.sk:8081/api/category';
+  private url = 'http://localhost:8080/api/categories';
 
   getCategories() : Observable<Category[]> {
     return this.http.get<Category[]>(this.url);

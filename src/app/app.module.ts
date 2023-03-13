@@ -21,6 +21,8 @@ import { BorrowingListComponent } from './borrowing/borrowing-list/borrowing-lis
 import { CategoryService } from './common/model/service/category.service';
 import { UserService } from './common/model/service/user.service';
 
+import { HttpClientModule } from '@angular/common/http'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,8 @@ import { UserService } from './common/model/service/user.service';
     BrowserModule,
     AppRoutingModule, // cez ng generate module app-routing --flat --module=app, aleob pri vytváraní projektu
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

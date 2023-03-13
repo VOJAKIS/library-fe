@@ -1,14 +1,16 @@
 <table *ngIf="users.length">
 	<tr>
 		<th>id</th>
-		<th>name</th>
+		<th>firstName</th>
+		<th>lastName</th>
 		<th>contactEmail</th>
 		<th>edit</th>
 		<th>delete</th>
 	</tr>
 	<tr *ngFor="let user of users; let i = index">
 		<td>{{ user.id }}</td>
-		<td>{{ user.name }}</td>
+		<td>{{ user.firstName }}</td>
+		<td>{{ user.lastName }}</td>
 		<td>{{ user.contactEmail }}</td>
 		<td><button (click)="updateUser(user.id)">Edit</button></td>
 		<td><button (click)="deleteUser(user.id)">Delete</button></td>

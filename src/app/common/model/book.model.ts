@@ -1,8 +1,12 @@
+import { Category } from "./category.model"
+
 export interface Book {
 
     id: number,
-    name: string,
-    author: string,
+    title: string,
+    authorFirstName: string,
+	authorLastName: string,
+	categories: Category[],
     availability: boolean
 
 }

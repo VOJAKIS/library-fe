@@ -17,11 +17,15 @@ export class BookComponent {
   book?: Book; 
 
   getBooks() : void {
-    this.service.getBooks().subscribe((books : Book[]) => { this.books = books });
+    this.service.getBooks().subscribe((books : Book[]) => {
+		this.books = books;
+	});
   }
 
   selectBookToUpdate(bookId: number): void {
-    this.service.getBook(bookId).subscribe((book : Book) => { this.book = book });
+    this.service.getBook(bookId).subscribe((book : Book) => {
+		this.book = book
+	});
   }
 
   createBook(book : Book) : void {

@@ -25,13 +25,14 @@ export class UserFormComponent {
   @Output()
   formUpdate = new EventEmitter<User>();
 
-  constructor() {
-    this.userForm = new FormGroup({
-      id: new FormControl(0, Validators.required),
-			name: new FormControl('Adam', [Validators.required, Validators.pattern('[a-zA-Z]*')]),
-			contactEmail: new FormControl('asd@mil.com', [Validators.required, Validators.email])
+  	constructor() {
+	    this.userForm = new FormGroup({
+	      	id: new FormControl(0, Validators.required),
+			firstName: new FormControl('Adam', [Validators.required, Validators.pattern('[a-zA-Z]*')]),
+			lastName: new FormControl('Valašťan', [Validators.required]),
+			contactEmail: new FormControl('jennyfromtheblock@gmail.com', [Validators.required])
 		})
-  }
+  	}
 
   saveUser(): void {
 		if (this.userForm.valid) {
@@ -47,8 +48,9 @@ export class UserFormComponent {
   private prepareUser(userId?: number): User {
     return {
       id: userId !== undefined ? userId : Date.now(),
-      name: this.userForm.controls['name'].value,
-      contactEmail: this.userForm.controls['contactEmail'].value
+      firstName: this.userForm.controls['firstName'].value,
+      lastName: this.userForm.controls['lastName'].value,
+	  contactEmail: this.userForm.controls['contactEmail'].value
     }
   }
 

@@ -11,17 +11,17 @@ export class BorrowingListComponent {
 	@Input()
 	borrowings: Array<Borrowing> = [];
   
-  @Output()
-  borrowingToUpdate = new EventEmitter<number>();
+  	@Output()
+  	borrowingToUpdate = new EventEmitter<number>();
 
-  @Output()
-  borrowingToDelete = new EventEmitter<number>();
+  	@Output()
+  	borrowingToDelete = new EventEmitter<number>();
 
-  updateBorrowing(borrowingId: number): void {
+  	updateBorrowing(borrowingId: number): void {
 		this.borrowingToUpdate.emit(borrowingId);
 	}
 
-  deleteBorrowing(borrowingId: number): void {
+	deleteBorrowing(borrowingId: number): void {
 		this.borrowingToDelete.emit(borrowingId);
 	}
 

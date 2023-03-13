@@ -29,8 +29,10 @@ export class BookFormComponent {
   constructor() {
     this.bookForm = new FormGroup({
       id: new FormControl(),
-      name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
-      author: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      title: new FormControl('Flowers for Algernon', [Validators.required, Validators.minLength(3)]),
+      authorFirstName: new FormControl('Daniel', [Validators.required, Validators.minLength(3)]),
+      authorLastName: new FormControl('Keyes', [Validators.required, Validators.minLength(3)]),
+	  categories: new FormControl('204', [Validators.required]),
       availability: new FormControl()
     });
   }
@@ -47,12 +49,17 @@ export class BookFormComponent {
   }
 
   private prepareBook(id? : number) : Book {
+	let categories = this.bookForm.controls.categories.value.split(' ').map((categoryId: string) => {
+		return Number(categoryId);
+	});
     return {
       id: id !== undefined ? id : Date.now(),
-      name: this.bookForm.controls.name.value,
-      author: this.bookForm.controls.author.value,
+      title: this.bookForm.controls.title.value,
+      authorFirstName: this.bookForm.controls.authorFirstName.value,
+      authorLastName: this.bookForm.controls.authorLastName.value,
+	  categories: categories,
       availability: this.bookForm.controls.availability.value,
-    }
+    };
   }
 
 }
