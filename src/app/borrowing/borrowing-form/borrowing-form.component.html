@@ -10,3 +10,14 @@
 	</label>
 	<button [disabled]="borrowingForm.invalid" type="button" (click)="saveBorrowing()">Pridaj</button>
 </form>
+
+<form [formGroup]="borrowingForm">
+	<label>Používateľ:
+		<select *ngFor="let user of users">
+			<option [value]="user.id">{{ user.firstName }} {{ user.lastName }}</option>
+		</select>
+		<select *ngFor="let book of books">
+			<option [value]="book.id">{{ book.title }}</option>
+		</select>
+	</label>
+</form>

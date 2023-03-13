@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Book } from 'app/common/model/book.model';
 import { Borrowing } from 'app/common/model/borrowing.model'
+import { User } from 'app/common/model/user.model';
 import { BorrowingService } from 'app/common/service/borrowing.service';
 
 @Component({
@@ -15,7 +17,7 @@ export class BorrowingComponent {
 	
 	  borrowings: Array<Borrowing> = [];
 	  borrowing?: Borrowing;
-	
+	  
 	  getBorrowings() : void {
 		this.service.getBorrowings().subscribe((borrowings: Borrowing[]) => {
 			this.borrowings = borrowings.map((borrowing?: any) => {

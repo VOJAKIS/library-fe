@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Book } from 'app/common/model/book.model';
 import { Borrowing } from 'app/common/model/borrowing.model';
+import { User } from 'app/common/model/user.model';
 
 @Component({
   selector: 'app-borrowing-form',
@@ -9,6 +10,10 @@ import { Borrowing } from 'app/common/model/borrowing.model';
   styleUrls: ['./borrowing-form.component.css']
 })
 export class BorrowingFormComponent {
+	
+	users?: User[];
+	books?: Book[];
+
   	borrowingForm: FormGroup;
 
 	@Input()
@@ -31,6 +36,7 @@ export class BorrowingFormComponent {
 			customerId: new FormControl(203, [Validators.required]),
 			dateOfBorrowing: new FormControl(Date())
 		});
+		this.users = [];
   	}
 
 	saveBorrowing(): void {
