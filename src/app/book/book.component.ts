@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Book } from 'app/common/model/book.model';
-import { BookService } from '../common/model/service/book.service';
+import { BookService } from '../common/service/book.service';
 
 @Component({
   selector: 'app-book',

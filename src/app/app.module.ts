@@ -18,8 +18,8 @@ import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { BorrowingFormComponent } from './borrowing/borrowing-form/borrowing-form.component';
 import { BorrowingListComponent } from './borrowing/borrowing-list/borrowing-list.component';
-import { CategoryService } from './common/model/service/category.service';
-import { UserService } from './common/model/service/user.service';
+import { CategoryService } from './common/service/category.service';
+import { UserService } from './common/service/user.service';
 
 import { HttpClientModule } from '@angular/common/http'
 

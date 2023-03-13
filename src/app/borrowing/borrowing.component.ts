@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Borrowing } from 'app/common/model/borrowing.model'
-import { BorrowingService } from 'app/common/model/service/borrowing.service';
+import { BorrowingService } from 'app/common/service/borrowing.service';
 
 @Component({
   selector: 'app-borrowing',
