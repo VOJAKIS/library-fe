@@ -1,0 +1,42 @@
+:root{
+    --paletteColor01: #293241;
+    --paletteColor02: #3d5a80;
+    --paletteColor03: #98c1d9;
+    --paletteColor04: #e0fbfc;
+    --paletteColor05: #ee6c4d;
+}
+
+body {
+    background-color: #0c1422;
+    color: #fff;
+    margin: 0 auto;
+    width: 50%;
+}
+
+table {
+}
+/* 
+table > * {
+    rotate: 45deg;
+    animation: rotateX .75s linear infinite;
+}
+@keyframes rotateX {
+    0% {
+        rotate: 0deg;
+        transform: scale(0.5);
+    }
+    50% {
+        rotate: 179deg;
+        transform: scale(1.5);
+    }
+    100% {
+        rotate: 359deg;
+        transform: scale(0.5);
+    }
+} */
+table, th, td {
+    border: 1px solid #3d5a80 !important;
+}
+th {
+    background-color: #3d5a80  !important;
+}
