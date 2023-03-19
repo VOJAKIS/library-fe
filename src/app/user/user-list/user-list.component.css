@@ -1,14 +1,19 @@
-th {
-	text-align: left;
-}
-
 th, td {
 	table-layout: fixed;
 	border: black 1px solid;
-	padding: 4px 8px;
+	padding: 6px 12px;
+	text-align: left;
 }
 
 table {
 	border-collapse: collapse;
-	
+	text-align: center;
+	margin: 0 auto;
+}
+
+button {
+	background-color: var(--paletteColor04);
+	margin: 0 auto;
+	/* padding: 2px 6px; */
+	width: 100%;
 }

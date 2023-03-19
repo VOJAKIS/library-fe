@@ -4,17 +4,23 @@
         <th>Názov knihy</th>
         <th>Meno autora</th>
         <th>Názov žánru</th>
-        <th>Dostupnosť</th>
-        <th>Funkcie</th>
+        <th>ISBN</th>
+        <th>Počet strán</th>
+        <th>Upraviť</th>
+        <th>Vymazať</th>
     </tr>
     <tr *ngFor="let book of books">
         <td>{{ book.id }}</td>
         <td>{{ book.title }}</td>
         <td>{{ book.authorFirstName }} {{ book.authorLastName }}</td>
-        <td>[{{ book.categories }}]</td>
-        <td>{{ book.availability === true ? 'Dostupná' : 'Nedostupná'}}</td>
+        <td><span *ngFor="let category of book.categories">{{category.name}}, </span></td>
+        <td>{{ book.isbn }}</td>
+        <td>{{ book.bookCount }}</td>
+        <!--TODO: Remove -> <td>{{ book.availability === true ? 'Dostupná' : 'Nedostupná'}}</td> -->
         <td>
             <button (click)="updateBook(book.id)">Upraviť</button>
+        </td>
+        <td>
             <button (click)="deleteBook(book.id)">Vymazať</button>
         </td>
     </tr>

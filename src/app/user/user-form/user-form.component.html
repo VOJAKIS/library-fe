@@ -1,18 +1,13 @@
 <form [formGroup]="userForm">
-	<!-- <label>id:
-		<input type="number" formControlName="id">
-		<p class="invalid-text" *ngIf="userForm.controls['id'].invalid">Je nutné zadať ID.</p>
-	</label> -->
 	<label>First name:
 		<input type="text" formControlName="firstName">
-		<!-- <p class="invalid-text" *ngIf="userForm.controls['name'].invalid">Je nutné zadať meno.</p> -->
 	</label>
 	<label>Last name:
 		<input type="text" formControlName="lastName">
-		<!-- <p class="invalid-text" *ngIf="userForm.controls['contactEmail'].invalid">Je nutné zadať e-mail.</p> -->
 	</label>
 	<label>Email:
 		<input type="text" formControlName="contactEmail">
 	</label>
 	<button type="button" [disabled]="userForm.invalid" (click)="saveUser()">Pridaj</button>
+	<button class="ta-r" type="button" (click)="formCancel.emit()">Zrušiť</button>
 </form>

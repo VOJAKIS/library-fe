@@ -1,15 +1,23 @@
 import { Component } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Book } from 'app/common/model/book.model';
 import { BookService } from '../common/service/book.service';
+import { OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ToastService } from 'angular-toastify';
+import { Router } from '@angular/router';
 
+@UntilDestroy()
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.css']
 })
-export class BookComponent {
+export class BookComponent implements OnDestroy {
 
-  constructor(private service : BookService) {
+  private getListSubscription?: Subscription;
+
+  constructor(private service: BookService, private toastService: ToastService, private router: Router) {
     this.getBooks();
   }
 
@@ -17,37 +25,45 @@ export class BookComponent {
   book?: Book; 
 
   getBooks() : void {
-    this.service.getBooks().subscribe((books : Book[]) => {
-		this.books = books;
-	});
+    this.getListUnsubscribe();
+    this.getListSubscription = this.service.getBooks().pipe(untilDestroyed(this)).subscribe((books : Book[]) => {
+		  this.books = books;
+	  });
   }
 
   selectBookToUpdate(bookId: number): void {
-    this.service.getBook(bookId).subscribe((book : Book) => {
-		this.book = book
-	});
+    this.router.navigate(['book', bookId]);
+    // this.service.getBook(bookId).pipe(untilDestroyed(this)).subscribe((book : Book) => {
+		// this.book = book
+	  // });
   }
 
   createBook(book : Book) : void {
-    this.service.createBook(book).subscribe(() => {
-      console.log('Kniha bola zaevidovaná.');
-      this.getBooks();
+    this.service.createBook(book).pipe(untilDestroyed(this)).subscribe(() => {
+      this.toastService.success('Kniha bola zaevidovaná.');
     })
-  }
-
-  updateBook(book : Book) : void {
-    this.service.updateBook(book).subscribe(() => {
-      console.log('Kniha bola upravená.');
-      this.getBooks();
-    })
+    this.getBooks();
   }
   
   deleteBook(bookId : number) : void {
-    this.service.deleteBook(bookId).subscribe(() => {
-      console.log('Kniha bola vymazaná.');
-      this.getBooks();
-    })
+    if(window.confirm('Naozaj chcete vymazať túto knihu?')) {
+        this.service.deleteBook(bookId).pipe(untilDestroyed(this)).subscribe(() => {
+        this.toastService.success('Kniha bola vymazaná.');
+        this.getBooks();
+      }, () => {
+        this.toastService.error('Knihu nebolo možné zmazať.');
+      });
+    }
   }
 
+  ngOnDestroy(): void {
+      this.getListUnsubscribe();
+  }
 
+  getListUnsubscribe(): void {
+    if(this.getListSubscription) {
+      this.getListSubscription.unsubscribe();
+      this.getListSubscription = undefined;
+    }
+  }
 }

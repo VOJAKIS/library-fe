@@ -25,6 +25,9 @@ export class BookFormComponent {
   @Output()
   formUpdate = new EventEmitter<Book>();
 
+  @Output()
+  formCancel = new EventEmitter<void>();
+
 
   constructor() {
     this.bookForm = new FormGroup({
@@ -32,8 +35,10 @@ export class BookFormComponent {
       title: new FormControl('Flowers for Algernon', [Validators.required, Validators.minLength(3)]),
       authorFirstName: new FormControl('Daniel', [Validators.required, Validators.minLength(3)]),
       authorLastName: new FormControl('Keyes', [Validators.required, Validators.minLength(3)]),
-	  categories: new FormControl('204', [Validators.required]),
-      availability: new FormControl()
+	    categories: new FormControl('204', [Validators.required]),
+      isbn: new FormControl('987-2-35-566563-10-0', [Validators.required]),
+      bookCount: new FormControl(289, [Validators.required])
+      // availability: new FormControl()
     });
   }
 
@@ -44,7 +49,6 @@ export class BookFormComponent {
       } else {
         this.formCreate.emit(this.prepareBook());
       }
-      this.bookForm.reset();
     }
   }
 
@@ -52,13 +56,16 @@ export class BookFormComponent {
 	let categories = this.bookForm.controls.categories.value.split(' ').map((categoryId: string) => {
 		return Number(categoryId);
 	});
+  console.log(this.bookForm.controls.isbn.value);
     return {
       id: id !== undefined ? id : Date.now(),
       title: this.bookForm.controls.title.value,
       authorFirstName: this.bookForm.controls.authorFirstName.value,
       authorLastName: this.bookForm.controls.authorLastName.value,
-	  categories: categories,
-      availability: this.bookForm.controls.availability.value,
+	    categories: categories,
+      isbn: this.bookForm.controls.isbn.value,
+      bookCount: this.bookForm.controls.bookCount.value
+      //TODO: Remove -> availability: this.bookForm.controls.availability.value,
     };
   }
 
