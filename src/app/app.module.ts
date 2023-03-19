@@ -24,6 +24,7 @@ import { UserService } from './common/service/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularToastifyModule, ToastService } from 'angular-toastify';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
+import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { BookDetailComponent } from './book/book-detail/book-detail.component';
     UserListComponent,
     BorrowingFormComponent,
     BorrowingListComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    CategoryDetailComponent
   ],
   imports: [
     BrowserModule,

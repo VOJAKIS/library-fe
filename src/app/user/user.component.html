@@ -1,11 +1,14 @@
 <h3>Users</h3>
 
-<app-user-form
+<div>
+
+	<app-user-form
 	[userData]="user"
 	(formCreate)="createUser($event)"
 	(formUpdate)="updateUser($event)"
-></app-user-form>
-
+	></app-user-form>
+</div>
+	
 <app-user-list
 	[users]="users"
 	(userToUpdate)="selectUserToUpdate($event)"

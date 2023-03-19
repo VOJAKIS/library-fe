@@ -1,8 +1,14 @@
-<h3>Žánre</h3>
-<app-category-form [categoryData]="category"
-                   (formCreate)="createCategory($event)"
-                   (formUpdate)="updateCategory($event)"
-></app-category-form>
+<h1>Žánre</h1>
+<button (click)="addUserDialog.showModal()">Pridať používateľa</button>
+<dialog #addUserDialog>
+    <div class="header">Pridanie žánru</div>
+    <div class="content">
+        <app-category-form [categoryData]="category"
+                           (formCreate)="createCategory($event); addUserDialog.close()"
+                           (formCancel)="addUserDialog.close()"
+        ></app-category-form>
+    </div>
+</dialog>
 <app-category-list [categories]="categories"
                    (categoryToUpdate)="selectCategoryToUpdate($event)"
                    (categoryToDelete)="deleteCategory($event)"

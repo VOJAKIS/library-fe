@@ -4,12 +4,17 @@ import { CategoryComponent } from './category/category.component';
 import { UserComponent } from './user/user.component';
 import { BorrowingComponent } from './borrowing/borrowing.component';
 import { BookComponent } from './book/book.component';
+import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
 
 const routes: Routes = [
   {
     path: 'category',
     component: CategoryComponent
+  },
+  {
+    path: 'category/:categoryId',
+    component: CategoryDetailComponent
   },
   {
     path: 'user',
