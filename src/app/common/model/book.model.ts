@@ -7,6 +7,8 @@ export interface Book {
     authorFirstName: string,
 	authorLastName: string,
 	categories: Category[],
-    availability: boolean
+    isbn: string,
+    bookCount: number,
+    //TODO: Cleanup -> availability: boolean
 
 }

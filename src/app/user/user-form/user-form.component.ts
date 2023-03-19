@@ -36,8 +36,8 @@ export class UserFormComponent {
 
   saveUser(): void {
 		if (this.userForm.valid) {
-      if (this.userForm.controls['id'].value) {
-        this.formUpdate.emit(this.prepareUser(this.userForm.controls['id'].value));
+      if (this.userForm.controls.id.value) {
+        this.formUpdate.emit(this.prepareUser(this.userForm.controls.id.value));
       } else {
         this.formCreate.emit(this.prepareUser());
       }
@@ -48,9 +48,9 @@ export class UserFormComponent {
   private prepareUser(userId?: number): User {
     return {
       id: userId !== undefined ? userId : Date.now(),
-      firstName: this.userForm.controls['firstName'].value,
-      lastName: this.userForm.controls['lastName'].value,
-	  contactEmail: this.userForm.controls['contactEmail'].value
+      firstName: this.userForm.controls.firstName.value,
+      lastName: this.userForm.controls.lastName.value,
+	    contactEmail: this.userForm.controls.contactEmail.value
     }
   }
 

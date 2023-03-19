@@ -21,7 +21,9 @@ import { BorrowingListComponent } from './borrowing/borrowing-list/borrowing-lis
 import { CategoryService } from './common/service/category.service';
 import { UserService } from './common/service/user.service';
 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { AngularToastifyModule, ToastService} from 'angular-toastify';
+import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
 
 @NgModule({
   declarations: [
@@ -37,16 +39,18 @@ import { HttpClientModule } from '@angular/common/http'
     UserFormComponent,
     UserListComponent,
     BorrowingFormComponent,
-    BorrowingListComponent
+    BorrowingListComponent,
+    CategoryDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, // cez ng generate module app-routing --flat --module=app, aleob pri vytváraní projektu
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularToastifyModule
   ],
-  providers: [],
+  providers: [ ToastService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

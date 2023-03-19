@@ -24,6 +24,9 @@ export class CategoryFormComponent {
   @Output()
   formUpdate = new EventEmitter<Category>();
 
+  @Output()
+  formCancel = new EventEmitter<void>();
+
 
   constructor() {
     this.categoryForm = new FormGroup({
@@ -31,7 +34,6 @@ export class CategoryFormComponent {
       name: new FormControl(null, [Validators.required, Validators.minLength(3)])
     });
   }
-  
 
   createCategory(): void {
     if(this.categoryForm.valid) {
@@ -40,7 +42,6 @@ export class CategoryFormComponent {
       } else {
         this.formCreate.emit(this.prepareCategory());
       }
-      this.categoryForm.reset();
     }
   }
 
