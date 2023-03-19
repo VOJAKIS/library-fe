@@ -54,6 +54,7 @@ export class BookFormComponent {
 	let categories = this.bookForm.controls.categories.value.split(' ').map((categoryId: string) => {
 		return Number(categoryId);
 	});
+  console.log(this.bookForm.controls.isbn.value);
     return {
       id: id !== undefined ? id : Date.now(),
       title: this.bookForm.controls.title.value,

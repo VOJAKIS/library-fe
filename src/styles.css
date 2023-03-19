@@ -11,8 +11,11 @@ body {
     color: #fff;
     margin: 0 auto;
     width: 50%;
+    text-align: center;
 }
-
+h3 {
+    font-size: x-large;
+}
 table {
 }
 /* 
@@ -35,8 +38,38 @@ table > * {
     }
 } */
 table, th, td {
-    border: 1px solid #3d5a80 !important;
+    border: 1px solid var(--paletteColor02) !important;
 }
 th {
-    background-color: #3d5a80  !important;
+    background-color: var(--paletteColor02)  !important;
+}
+
+button {
+    background-color: var(--paletteColor05);
+    color: var(--paletteColor01);
+    padding: 1% 2%;
+}
+
+tr > td:nth-child(5) > button::before{
+    content: 'XX' !important;
+    display: block;
+    background-color: #98c1d9;
+}
+tr > td:nth-child(6) > button::before{
+    content: 'XX' !important;
+    display: block;
+    background-color: #98c1d9;
+}
+
+form {
+    width: 50%;
+    margin: 0 20%;
+    text-align: center;
+}
+form  input {
+    width: 80% !important;
+    margin: 0 auto;
+}
+div:has(router-outlet) {
+    width: 100%;
 }
