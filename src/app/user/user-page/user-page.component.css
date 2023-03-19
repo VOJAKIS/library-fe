@@ -1,0 +1,20 @@
+dialog {
+	width: 30%;
+	border: none;
+	text-align: left;
+	background-color: var(--paletteColor02);
+	color: var(--paletteColor04);
+}
+
+dialog > .header {
+	padding: 4px;
+	font-size: 16pt;
+}
+
+dialog > .content {
+	padding: 6px;
+}
+
+button {
+	margin-bottom: 16pt;
+}

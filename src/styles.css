@@ -13,13 +13,33 @@ body {
     width: 50%;
     text-align: center;
 }
-h3 {
-    font-size: x-large;
+
+table, th, td {
+    border: 1px solid var(--paletteColor02) !important;
 }
-table {
+th {
+    background-color: var(--paletteColor02)  !important;
 }
-/* 
-table > * {
+
+button {
+    background-color: var(--paletteColor05);
+    padding: 1% 2%;
+	color: black;
+	font-size: 12pt;
+}
+
+table button {
+	margin: 0 auto;
+	padding: 2px 6px;
+}
+
+form label {
+	margin: 0 auto;
+	text-align: center;
+	width: 100%;
+}
+
+/* table > * {
     rotate: 45deg;
     animation: rotateX .75s linear infinite;
 }
@@ -30,46 +50,10 @@ table > * {
     }
     50% {
         rotate: 179deg;
-        transform: scale(1.5);
+        transform: scale(1.2);
     }
     100% {
         rotate: 359deg;
         transform: scale(0.5);
     }
 } */
-table, th, td {
-    border: 1px solid var(--paletteColor02) !important;
-}
-th {
-    background-color: var(--paletteColor02)  !important;
-}
-
-button {
-    background-color: var(--paletteColor05);
-    color: var(--paletteColor01);
-    padding: 1% 2%;
-}
-
-tr > td:nth-child(5) > button::before{
-    content: 'XX' !important;
-    display: block;
-    background-color: #98c1d9;
-}
-tr > td:nth-child(6) > button::before{
-    content: 'XX' !important;
-    display: block;
-    background-color: #98c1d9;
-}
-
-form {
-    width: 50%;
-    margin: 0 20%;
-    text-align: center;
-}
-form  input {
-    width: 80% !important;
-    margin: 0 auto;
-}
-div:has(router-outlet) {
-    width: 100%;
-}

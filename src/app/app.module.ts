@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './category/category.component';
 
-import { UserComponent } from './user/user.component';
 import { BorrowingComponent } from './borrowing/borrowing.component';
 
 import { BookComponent } from './book/book.component';
@@ -25,12 +24,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularToastifyModule, ToastService } from 'angular-toastify';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
 import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
+import { UserDetailPageComponent } from './user/user-detail-page/user-detail-page.component';
+import { UserPageComponent } from './user/user-page/user-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoryComponent,
-    UserComponent,
+    // UserComponent,
     BorrowingComponent,
     BookComponent,
     BookListComponent,
@@ -42,7 +43,9 @@ import { CategoryDetailComponent } from './category/category-detail/category-det
     BorrowingFormComponent,
     BorrowingListComponent,
     BookDetailComponent,
-    CategoryDetailComponent
+    CategoryDetailComponent,
+    UserDetailPageComponent,
+    UserPageComponent,
   ],
   imports: [
     BrowserModule,
