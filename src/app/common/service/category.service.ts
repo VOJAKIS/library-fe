@@ -8,7 +8,7 @@ import { Category } from 'app/common/model/category.model';
 })
 export class CategoryService {
 
-  private url = 'http://localhost:8080/api/categories';
+  private url = 'http://localhost:8080/api/bookCategories';
 
   getCategories() : Observable<Category[]> {
     return this.http.get<Category[]>(this.url);
