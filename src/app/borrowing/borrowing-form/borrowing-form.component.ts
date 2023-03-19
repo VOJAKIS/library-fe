@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Book } from 'app/common/model/book.model';
 import { Borrowing } from 'app/common/model/borrowing.model';
+import { User } from 'app/common/model/user.model';
 
 @Component({
   selector: 'app-borrowing-form',
@@ -9,7 +10,8 @@ import { Borrowing } from 'app/common/model/borrowing.model';
   styleUrls: ['./borrowing-form.component.css']
 })
 export class BorrowingFormComponent {
-  	borrowingForm: FormGroup;
+
+	borrowingForm: FormGroup;
 
 	@Input()
 	set borrowingData(borrowing: Borrowing | undefined) {
@@ -17,6 +19,15 @@ export class BorrowingFormComponent {
 			this.borrowingForm.setValue(borrowing);
 		}
 	}
+	
+	@Input()
+	users?: User[];
+	
+	@Input()
+	books?: Book[];
+	
+	@Output()
+	formCancel = new EventEmitter<void>();
 
 	@Output()
 	formCreate = new EventEmitter<Borrowing>();
@@ -26,9 +37,9 @@ export class BorrowingFormComponent {
 
   	constructor() {
 	    this.borrowingForm = new FormGroup({
-	      	id: new FormControl(),
-			bookId: new FormControl(504, [Validators.required]),
-			customerId: new FormControl(203, [Validators.required]),
+	      	id: new FormControl(null),
+			book: new FormControl(null, [Validators.required]),
+			user: new FormControl(null, [Validators.required]),
 			dateOfBorrowing: new FormControl(Date())
 		});
   	}
@@ -40,15 +51,14 @@ export class BorrowingFormComponent {
       		} else {
         		this.formCreate.emit(this.prepareBorrowing());
      	 	}
-      		this.borrowingForm.reset();
     	}
 	}
 
-  	private prepareBorrowing(borrowingId?: number): Borrowing {
+  	private prepareBorrowing(borrowingId?: number): any {
     	return {
       		id: borrowingId != undefined ? borrowingId : Date.now(),
-	      	bookId: this.borrowingForm.controls['bookId'].value,
-	      	customerId: this.borrowingForm.controls['customerId'].value,
+	      	bookId: this.borrowingForm.controls['book'].value,
+	      	customerId: this.borrowingForm.controls['user'].value,
 			dateOfBorrowing: this.borrowingForm.controls['dateOfBorrowing'].value
     	}
   	}

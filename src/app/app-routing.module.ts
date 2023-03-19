@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoryComponent } from './category/category.component';
 import { UserPageComponent } from './user/user-page/user-page.component';
-import { BorrowingComponent } from './borrowing/borrowing.component';
+import { BorrowingPageComponent } from './borrowing/borrowing-page/borrowing-page.component';
 import { BookComponent } from './book/book.component';
 import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
 import { UserDetailPageComponent } from './user/user-detail-page/user-detail-page.component';
+import { BorrowingDetailPageComponent } from './borrowing/borrowing-detail-page/borrowing-detail-page.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,11 @@ const routes: Routes = [
   },
   {
     path: 'borrowing',
-    component: BorrowingComponent
+    component: BorrowingPageComponent
+  },
+  {
+    path: 'borrowing/:borrowingId',
+    component: BorrowingDetailPageComponent
   },
   {
     path: 'book',
