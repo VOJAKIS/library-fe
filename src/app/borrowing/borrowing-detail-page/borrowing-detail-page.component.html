@@ -1,0 +1,7 @@
+<app-borrowing-form
+	[borrowingData]="borrowing"
+	[books]="books"
+	[users]="users"
+	(formUpdate)="updateBorrowing($event)"
+	(formCancel)="cancel()"
+></app-borrowing-form>

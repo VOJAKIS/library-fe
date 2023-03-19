@@ -13,9 +13,9 @@
         <td>{{ book.id }}</td>
         <td>{{ book.title }}</td>
         <td>{{ book.authorFirstName }} {{ book.authorLastName }}</td>
-        <td>[{{ book.categories }}]</td>
-        <td>[{{ book.isbn }}]</td>
-        <td>[{{ book.bookCount }}]</td>
+        <td><span *ngFor="let category of book.categories">{{category.name}}, </span></td>
+        <td>{{ book.isbn }}</td>
+        <td>{{ book.bookCount }}</td>
         <!--TODO: Remove -> <td>{{ book.availability === true ? 'Dostupná' : 'Nedostupná'}}</td> -->
         <td>
             <button (click)="updateBook(book.id)">Upraviť</button>

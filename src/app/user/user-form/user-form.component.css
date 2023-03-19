@@ -1,12 +1,14 @@
 label, input {
 	display: block;
 	margin-top: 8px;
-	width: 42%;
+	/* width: 50%; */
 }
 
 button {
 	margin-top: 4px;
 	margin-bottom: 4px;
+	padding: 8px 12px;
+	margin-right: 16px;
 }
 
 p {
@@ -15,4 +17,16 @@ p {
 
 .invalid-text {
 	color: red;
+}
+
+form, form * {
+	text-align: left!important;
+}
+
+form  input {
+	width: 100%;
+}
+
+form > .ta-r {
+	text-align: right;
 }

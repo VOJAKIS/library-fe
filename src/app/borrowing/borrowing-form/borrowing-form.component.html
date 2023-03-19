@@ -1,12 +1,20 @@
-<form [formGroup]="borrowingForm">
-	<!-- <label>id: -->
-		<!-- <input type="number" formControlName="id"> -->
-	<!-- </label> -->
-	<label>book:
-		<input type="number" formControlName="bookId">
+<form [formGroup]="borrowingForm" (submit)="saveBorrowing()">
+	<label>Používateľ:
+		<select type="text" formControlName="user">
+			<option *ngFor="let user of users" [value]="user.id">
+				{{ user.id + ' ' + user.firstName + ' ' + user.lastName}}
+			</option>
+		</select>
 	</label>
-	<label>user:
-		<input type="number" formControlName="customerId">
+	<label>Knižka:
+		<select type="text" formControlName="book">
+			<option *ngFor="let book of books" [value]="book.id">
+				{{ book.authorFirstName + ' ' + book.authorLastName + ' - ' + book.title }}
+			</option>
+		</select>
 	</label>
-	<button [disabled]="borrowingForm.invalid" type="button" (click)="saveBorrowing()">Pridaj</button>
+
+	<button [disabled]="borrowingForm.invalid" type="button" (click)="saveBorrowing()">Uložiť</button>
+	<button class="ta-r" type="button" (click)="formCancel.emit()">Zrušiť</button>
+
 </form>
