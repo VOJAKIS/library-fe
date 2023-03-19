@@ -4,6 +4,7 @@ import { CategoryComponent } from './category/category.component';
 import { UserComponent } from './user/user.component';
 import { BorrowingComponent } from './borrowing/borrowing.component';
 import { BookComponent } from './book/book.component';
+import { BookDetailComponent } from './book/book-detail/book-detail.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'book',
     component: BookComponent
+  },
+  {
+    path: 'book/:bookId',
+    component: BookDetailComponent
   },
   { // Wildcard routes, ak ani jedna nesedí, tak choď na túto url adresu / vyrenderuj tento component
     path: '**',
