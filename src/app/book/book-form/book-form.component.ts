@@ -32,8 +32,10 @@ export class BookFormComponent {
       title: new FormControl('Flowers for Algernon', [Validators.required, Validators.minLength(3)]),
       authorFirstName: new FormControl('Daniel', [Validators.required, Validators.minLength(3)]),
       authorLastName: new FormControl('Keyes', [Validators.required, Validators.minLength(3)]),
-	  categories: new FormControl('204', [Validators.required]),
-      availability: new FormControl()
+	    categories: new FormControl('204', [Validators.required]),
+      isbn: new FormControl('987-2-35-566563-10-0', [Validators.required]),
+      bookCount: new FormControl(289, [Validators.required])
+      // availability: new FormControl()
     });
   }
 
@@ -57,8 +59,10 @@ export class BookFormComponent {
       title: this.bookForm.controls.title.value,
       authorFirstName: this.bookForm.controls.authorFirstName.value,
       authorLastName: this.bookForm.controls.authorLastName.value,
-	  categories: categories,
-      availability: this.bookForm.controls.availability.value,
+	    categories: categories,
+      isbn: this.bookForm.controls.isbn.value,
+      bookCount: this.bookForm.controls.bookCount.value
+      //TODO: Remove -> availability: this.bookForm.controls.availability.value,
     };
   }
 
