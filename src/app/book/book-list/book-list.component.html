@@ -6,7 +6,8 @@
         <th>Názov žánru</th>
         <th>ISBN</th>
         <th>Počet strán</th>
-        <th>Funkcie</th>
+        <th>Upraviť</th>
+        <th>Vymazať</th>
     </tr>
     <tr *ngFor="let book of books">
         <td>{{ book.id }}</td>
@@ -18,6 +19,8 @@
         <!--TODO: Remove -> <td>{{ book.availability === true ? 'Dostupná' : 'Nedostupná'}}</td> -->
         <td>
             <button (click)="updateBook(book.id)">Upraviť</button>
+        </td>
+        <td>
             <button (click)="deleteBook(book.id)">Vymazať</button>
         </td>
     </tr>
