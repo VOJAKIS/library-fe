@@ -27,5 +27,6 @@
     <input type="text" name="Book Count" formControlName="bookCount">
     <p *ngIf="bookForm.controls.bookCount.errors?.required" class="ErrorMessage">Zadajte počet strán.</p>
 
+    <button (click)="formCancel.emit()">Zrušiť</button>
     <button [disabled]="bookForm.invalid">Odoslať</button>
 </form>

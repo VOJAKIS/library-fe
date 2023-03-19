@@ -25,6 +25,9 @@ export class BookFormComponent {
   @Output()
   formUpdate = new EventEmitter<Book>();
 
+  @Output()
+  formCancel = new EventEmitter<void>();
+
 
   constructor() {
     this.bookForm = new FormGroup({
@@ -46,7 +49,6 @@ export class BookFormComponent {
       } else {
         this.formCreate.emit(this.prepareBook());
       }
-      this.bookForm.reset();
     }
   }
 
