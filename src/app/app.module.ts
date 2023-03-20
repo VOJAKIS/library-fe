@@ -24,6 +24,7 @@ import { UserDetailPageComponent } from './user/user-detail-page/user-detail-pag
 import { UserPageComponent } from './user/user-page/user-page.component';
 import { BorrowingPageComponent } from './borrowing/borrowing-page/borrowing-page.component';
 import { BorrowingDetailPageComponent } from './borrowing/borrowing-detail-page/borrowing-detail-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { BorrowingDetailPageComponent } from './borrowing/borrowing-detail-page/
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    AngularToastifyModule
+    AngularToastifyModule,
+    NgbModule
   ],
   providers: [ToastService],
   bootstrap: [AppComponent]
