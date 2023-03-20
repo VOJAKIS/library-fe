@@ -45,9 +45,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UserPageComponent,
     BorrowingPageComponent,
     BorrowingDetailPageComponent,
+    BorrowingListComponent,
+    BookDetailComponent,
+    CategoryDetailComponent,
+    UserDetailPageComponent,
+    UserPageComponent,
+    BorrowingPageComponent,
+    BorrowingDetailPageComponent,
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule, // cez ng generate module app-routing --flat --module=app, alebo pri vytváraní projektu
     AppRoutingModule, // cez ng generate module app-routing --flat --module=app, alebo pri vytváraní projektu
     ReactiveFormsModule,
     FormsModule,
@@ -55,6 +63,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AngularToastifyModule,
     NgbModule
   ],
+  providers: [ToastService],
   providers: [ToastService],
   bootstrap: [AppComponent]
 })
