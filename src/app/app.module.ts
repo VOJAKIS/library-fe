@@ -64,7 +64,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule
   ],
   providers: [ToastService],
-  providers: [ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
