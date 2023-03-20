@@ -3,3 +3,18 @@ h3 {
     border-bottom: 1px dashed #000;
     padding-bottom: 10px;
 }
+
+
+dialog {
+    min-height: 330px;
+    min-width: 335px;
+    border: none;
+}
+dialog > .header {
+    padding: 18px;
+    font-size : 25px;
+}
+dialog > .content {
+    padding: 18px;
+
+}

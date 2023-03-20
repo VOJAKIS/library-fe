@@ -1,0 +1,22 @@
+<h1>Borrowings</h1>
+
+<button (click)="addBorrowingDialog.showModal()">Pridať pôžičku</button>
+
+<dialog #addBorrowingDialog>
+	<div class="header">Pridanie pôžičky</div>
+	<div class="content">
+		<app-borrowing-form
+			[books]="books"
+			[users]="users"
+			(formCreate)="createBorrowing($event);
+			addBorrowingDialog.close()"
+			(formCancel)="addBorrowingDialog.close()"
+		></app-borrowing-form>
+	</div>
+</dialog>
+
+<app-borrowing-list
+	[borrowings]="borrowings"
+	(borrowingToUpdate)="selectBorrowingToUpdate($event)"
+	(borrowingToDelete)="deleteBorrowing($event)"
+></app-borrowing-list>

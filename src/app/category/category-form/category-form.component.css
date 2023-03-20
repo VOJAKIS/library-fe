@@ -1,4 +1,4 @@
-.CategoryForm {
+/* .CategoryForm {
     position: relative;
     border: 1px solid #000;
     min-width: 200px;
@@ -26,10 +26,11 @@
     margin: 4px 0;
 }
 
+*/
 .ErrorMessage {
     color: #f00;
     font-style: italic;
     line-height: 15px;
 	margin: 2px 4px;
 	display: block;
-}
+} 

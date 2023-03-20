@@ -6,9 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './category/category.component';
 
-import { UserComponent } from './user/user.component';
-import { BorrowingComponent } from './borrowing/borrowing.component';
-
 import { BookComponent } from './book/book.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { BookFormComponent } from './book/book-form/book-form.component';
@@ -18,17 +15,20 @@ import { UserFormComponent } from './user/user-form/user-form.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { BorrowingFormComponent } from './borrowing/borrowing-form/borrowing-form.component';
 import { BorrowingListComponent } from './borrowing/borrowing-list/borrowing-list.component';
-import { CategoryService } from './common/service/category.service';
-import { UserService } from './common/service/user.service';
 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { AngularToastifyModule, ToastService } from 'angular-toastify';
+import { BookDetailComponent } from './book/book-detail/book-detail.component';
+import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
+import { UserDetailPageComponent } from './user/user-detail-page/user-detail-page.component';
+import { UserPageComponent } from './user/user-page/user-page.component';
+import { BorrowingPageComponent } from './borrowing/borrowing-page/borrowing-page.component';
+import { BorrowingDetailPageComponent } from './borrowing/borrowing-detail-page/borrowing-detail-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoryComponent,
-    UserComponent,
-    BorrowingComponent,
     BookComponent,
     BookListComponent,
     BookFormComponent,
@@ -37,16 +37,23 @@ import { HttpClientModule } from '@angular/common/http'
     UserFormComponent,
     UserListComponent,
     BorrowingFormComponent,
-    BorrowingListComponent
+    BorrowingListComponent,
+    BookDetailComponent,
+    CategoryDetailComponent,
+    UserDetailPageComponent,
+    UserPageComponent,
+    BorrowingPageComponent,
+    BorrowingDetailPageComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, // cez ng generate module app-routing --flat --module=app, aleob pri vytváraní projektu
+    AppRoutingModule, // cez ng generate module app-routing --flat --module=app, alebo pri vytváraní projektu
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularToastifyModule
   ],
-  providers: [],
+  providers: [ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

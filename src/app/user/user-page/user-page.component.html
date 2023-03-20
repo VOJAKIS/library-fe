@@ -1,0 +1,20 @@
+<h1>Users</h1>
+
+<button (click)="addUserDialog.showModal()">Pridať používateľa</button>
+
+<dialog #addUserDialog>
+	<div class="header">Pridanie používateľa</div>
+	<div class="content">
+		<app-user-form
+			(formCreate)="createUser($event);
+			addUserDialog.close()"
+			(formCancel)="addUserDialog.close()"
+		></app-user-form>
+	</div>
+</dialog>
+	
+<app-user-list
+	[users]="users"
+	(userToUpdate)="selectUserToUpdate($event)"
+	(userToDelete)="deleteUser($event)"
+></app-user-list>
