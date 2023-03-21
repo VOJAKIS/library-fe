@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+<<<<<<< HEAD
 import { CategoryComponent } from './category/category.component';
 
 import { BookComponent } from './book/book.component';
@@ -25,6 +24,9 @@ import { UserPageComponent } from './user/user-page/user-page.component';
 import { BorrowingPageComponent } from './borrowing/borrowing-page/borrowing-page.component';
 import { BorrowingDetailPageComponent } from './borrowing/borrowing-detail-page/borrowing-detail-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+=======
+import { HttpClientModule } from '@angular/common/http';
+>>>>>>> 845c07ec7acb8663fce65747c8d78db5edf1f82e
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+<<<<<<< HEAD
     AppRoutingModule, // cez ng generate module app-routing --flat --module=app, alebo pri vytváraní projektu
     AppRoutingModule, // cez ng generate module app-routing --flat --module=app, alebo pri vytváraní projektu
     ReactiveFormsModule,
@@ -62,6 +65,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     AngularToastifyModule,
     NgbModule
+=======
+    HttpClientModule
+>>>>>>> 845c07ec7acb8663fce65747c8d78db5edf1f82e
   ],
   providers: [ToastService],
   bootstrap: [AppComponent]

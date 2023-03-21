@@ -1,0 +1,19 @@
+.CatsFact {
+    text-align: center;
+}
+.BoldText {
+    font-weight: bold;
+}
+.FactOutput {
+    display: block;
+    min-height: 200px;
+    text-align: left;
+    border: 1px solid #000;
+    border-radius: 50px;
+    padding: 1.5rem 2rem;
+}
+.RefreshOutput {
+    margin: 1.5rem auto;
+    border: 1px solid #000;
+    border-radius: 50px;
+}
