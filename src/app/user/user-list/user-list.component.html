@@ -1,4 +1,13 @@
-<table *ngIf="users.length">
+<form [formGroup]="filterForm" (submit)="filter()">
+	<input formControlName>
+	<button type="submit">Filtrovať</button>
+</form>
+<ngb-pagination [collectionSize]="getTotalElements()"
+				[page]="getPageNumber()"
+				[pageSize]="getPageSize()"
+				(pageChange)="changePage($event)">
+</ngb-pagination>
+<!-- <table *ngIf="users.length">
 	<tr>
 		<th>ID</th>
 		<th>Meno</th>
@@ -15,4 +24,4 @@
 		<td><button (click)="updateUser(user.id)">UPRAV</button></td>
 		<td><button (click)="deleteUser(user.id)">VYMAŽ</button></td>
 	</tr>
-</table>
+</table> -->

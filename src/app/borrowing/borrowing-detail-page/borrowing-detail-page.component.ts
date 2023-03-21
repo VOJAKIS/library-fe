@@ -4,7 +4,7 @@ import { untilDestroyed } from '@ngneat/until-destroy';
 import { ToastService } from 'angular-toastify';
 import { Book } from 'app/common/model/book.model';
 import { Borrowing } from 'app/common/model/borrowing.model';
-import { User } from 'app/common/model/user.model';
+import { User, UserResponse } from 'app/common/model/user.model';
 import { BookService } from 'app/common/service/book.service';
 import { BorrowingService } from 'app/common/service/borrowing.service';
 import { UserService } from 'app/common/service/user.service';
@@ -21,7 +21,7 @@ export class BorrowingDetailPageComponent {
 	books?: Book[];
 	private bookId: number | null;
 	
-	users?: User[];
+	users?: UserResponse;
 	private userId: number | null;
 
 	constructor(private router: Router,
@@ -53,7 +53,7 @@ export class BorrowingDetailPageComponent {
 
 	getUsers(): void {
 		if (this.userId) {
-			this.userService.getUsers().pipe(untilDestroyed(this)).subscribe((users: User[]) => {
+			this.userService.getUsers().pipe(untilDestroyed(this)).subscribe((users: UserResponse) => {
 				this.users = users;
 			})
 		}

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Book } from 'app/common/model/book.model';
 import { Borrowing } from 'app/common/model/borrowing.model'
-import { User } from 'app/common/model/user.model';
+import { User, UserResponse } from 'app/common/model/user.model';
 import { BookService } from 'app/common/service/book.service';
 import { BorrowingService } from 'app/common/service/borrowing.service';
 import { UserService } from 'app/common/service/user.service';
@@ -38,13 +38,13 @@ export class BorrowingPageComponent implements OnDestroy {
 		}
 	}
 
-	users?: User[];
+	users?: UserResponse;
 	books?: Book[];
 	borrowings: Array<Borrowing> = [];
 	borrowing?: Borrowing;
 
 	getUsers(): void {
-		this.userService.getUsers().pipe(untilDestroyed(this)).subscribe((users: User[]) => {
+		this.userService.getUsers().pipe(untilDestroyed(this)).subscribe((users: UserResponse) => {
 			this.users = users;
 		})
 	}
