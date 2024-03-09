@@ -1,0 +1,11 @@
+<form [formGroup]="form" (submit)="login()">
+	<label>Prihlasovacie meno:
+		<input formControlName="username"/>
+	</label>
+
+	<label>Heslo:
+		<input formControlName="password"/>
+	</label>
+	
+	<button type="submit">Prihlásiť sa</button>
+</form>

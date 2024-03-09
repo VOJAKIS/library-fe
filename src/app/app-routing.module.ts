@@ -8,8 +8,13 @@ import { CategoryDetailComponent } from './category/category-detail/category-det
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
 import { UserDetailPageComponent } from './user/user-detail-page/user-detail-page.component';
 import { BorrowingDetailPageComponent } from './borrowing/borrowing-detail-page/borrowing-detail-page.component';
+import { LoginPageComponent } from './authentication/login-page/login-page.component';
 
 const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginPageComponent
+  },
   {
     path: 'category',
     component: CategoryComponent
@@ -23,8 +28,8 @@ const routes: Routes = [
     component: UserPageComponent
   },
   {
-	path: 'user/:userId',
-	component: UserDetailPageComponent
+    path: 'user/:userId',
+    component: UserDetailPageComponent
   },
   {
     path: 'borrowing',

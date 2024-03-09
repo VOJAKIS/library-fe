@@ -16,7 +16,7 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { BorrowingFormComponent } from './borrowing/borrowing-form/borrowing-form.component';
 import { BorrowingListComponent } from './borrowing/borrowing-list/borrowing-list.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AngularToastifyModule, ToastService } from 'angular-toastify';
 import { BookDetailComponent } from './book/book-detail/book-detail.component';
 import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
@@ -25,6 +25,8 @@ import { UserPageComponent } from './user/user-page/user-page.component';
 import { BorrowingPageComponent } from './borrowing/borrowing-page/borrowing-page.component';
 import { BorrowingDetailPageComponent } from './borrowing/borrowing-detail-page/borrowing-detail-page.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginPageComponent } from './authentication/login-page/login-page.component';
+import { AuthHeaderInterceptor } from './authentication/interceptor/auth-header.interceptor';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UserPageComponent,
     BorrowingPageComponent,
     BorrowingDetailPageComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AngularToastifyModule,
     NgbModule
   ],
-  providers: [ToastService],
+  providers: [
+    ToastService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHeaderInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

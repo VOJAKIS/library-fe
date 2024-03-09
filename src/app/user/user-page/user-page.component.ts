@@ -1,11 +1,12 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy } from '@angular/core';
-import { User } from 'app/common/model/user.model';
+import { Component, OnDestroy, TemplateRef } from '@angular/core';
+import { User, UserResponse } from 'app/common/model/user.model';
 import { UserService } from 'app/common/service/user.service';
 import { Subscription } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastService } from 'angular-toastify';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Pagination } from 'app/common/model/pagination.model';
 
 @UntilDestroy()
 @Component({
@@ -14,12 +15,34 @@ import { Router } from '@angular/router';
 	styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent implements OnDestroy {
-
+	
+	constructor(
+		private service: UserService,
+		private toastService: ToastService,
+		private router: Router,
+		private modalService: NgbModal
+	) {
+		this.getUsers();
+	}
+	
 	private getListSubscription?: Subscription;
+
+	user?: User;
+	// users: Array<User> = [];
+
+	users?: UserResponse;
+
+	openModal(content: TemplateRef<any>): void {
+		this.modalService.open(content, {
+			size: 'sm'
+		});
+	}
+	
 
 	ngOnDestroy(): void {
 		this.getListUnsubscribe();
 	}
+
 	getListUnsubscribe(): void {
 		if (this.getListSubscription) {
 			this.getListSubscription.unsubscribe();
@@ -27,19 +50,12 @@ export class UserPageComponent implements OnDestroy {
 		}
 	}
 
-	user?: User;
-	users: Array<User> = [];
-
-	constructor(
-		private service: UserService,
-		private toastService: ToastService,
-		private router: Router
-	) {
-		this.getUsers();
-	}
-
-	getUsers(): void {
-		this.service.getUsers().pipe(untilDestroyed(this)).subscribe((users: User[]) => {
+	getUsers(pagination?: Pagination): void {
+		/* this.service.getUsers().pipe(untilDestroyed(this)).subscribe((users: User[]) => {
+			this.users = users;
+		}) */
+		this.service.getUsers(pagination).pipe(untilDestroyed(this))
+			.subscribe((users: UserResponse) => {
 			this.users = users;
 		})
 	}

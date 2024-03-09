@@ -1,8 +1,7 @@
 <h1>Users</h1>
 
-<button (click)="addUserDialog.showModal()">Pridať používateľa</button>
-
-<dialog #addUserDialog>
+<!-- <button (click)="addUserDialog.showModal()">Pridať používateľa</button> -->
+<!-- <dialog #addUserDialog>
 	<div class="header">Pridanie používateľa</div>
 	<div class="content">
 		<app-user-form
@@ -11,10 +10,26 @@
 			(formCancel)="addUserDialog.close()"
 		></app-user-form>
 	</div>
-</dialog>
+</dialog> -->
+
+<button (click)="openModal(content)">Pridať používateľa</button>
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Pridanie používateľa</h4>
+		<button type="button" class="btn-close" (click)="modal.close()"></button>
+	</div>
+	<div class="modal-body">
+		<app-user-form
+			(formCreate)="createUser($event); modal.close()"
+			(formCancel)="modal.close()">
+		</app-user-form>
+	</div>
+</ng-template>
+   
 	
 <app-user-list
 	[users]="users"
 	(userToUpdate)="selectUserToUpdate($event)"
 	(userToDelete)="deleteUser($event)"
+	(pageChange)="getUsers($event)"
 ></app-user-list>
